@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #f59e0b; /* naranja */
-  --color-primary-dark: #d97706;
+  --color-primary: #FE6905; /* naranja */
+  --color-primary-dark:#E05804 ;
   --color-secondary: #2563eb; /* azul */
   --color-bg: #f3f4f6;
   --color-surface: #ffffff;
@@ -150,6 +150,97 @@ body {
   border-radius: 999px;
   font-size: 0.85rem;
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+}
+/* BOTÓN MENÚ MÓVIL TEMA "RUTA + AUTO" */
+
+.nav-toggle {
+  display: none; /* se muestra sólo en mobile con @media */
+  margin-left: auto;
+  width: 46px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 0 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Bloque que representa la ruta (3 líneas tipo hamburguesa) */
+.nav-toggle-road {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.road-line {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Línea central simulando carril punteado */
+.road-line-middle {
+  background: repeating-linear-gradient(
+    to right,
+    #e5e7eb 0 4px,
+    transparent 4px 7px
+  );
+}
+
+/* Autito de frente */
+.nav-toggle-car {
+  width: 16px;
+  height: 10px;
+  border-radius: 6px 6px 4px 4px;
+  background: linear-gradient(135deg, #f59e0b, #facc15);
+  position: relative;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.45);
+  transition: transform 0.15s ease;
+}
+
+/* Ruedas */
+.nav-toggle-car::before,
+.nav-toggle-car::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #020617;
+}
+
+.nav-toggle-car::before {
+  left: 1px;
+}
+
+.nav-toggle-car::after {
+  right: 1px;
+}
+
+/* Estado abierto: "la ruta" se contrae y el auto se inclina un poco */
+.nav-toggle-open .road-line {
+  opacity: 0;
+  transform: scaleX(0.4);
+}
+
+.nav-toggle-open .nav-toggle-car {
+  transform: translateY(-1px) rotate(-8deg);
+}
+
+/* ESTADO DESKTOP: MENÚ MÓVIL OCULTO POR COMPLETO */
+.mobile-menu {
+  display: none;
+}
+
+.mobile-nav-link,
+.mobile-nav-cta {
+  display: none;
 }
 
 /* =========================
@@ -329,7 +420,7 @@ body {
 }
 
 .hero-highlight {
-  color: #f59e0b;
+  color: #FE6905;
 }
 
 .hero-highlight-alt {
@@ -510,6 +601,12 @@ body {
   display: flex;
   gap: 12px;
 }
+
+/* Fila específica de Retiro / Devolución en columna para que no desborde */
+.form-row-locations {
+  flex-direction: column;
+}
+
 
 .form-group {
   flex: 1;
@@ -1035,43 +1132,181 @@ textarea {
    RESPONSIVE
    ========================= */
 
+/* ====================================================
+   NAV MOBILE FINAL (OVERRIDE)
+   ==================================================== */
+
+/* Botón menú móvil temática "ruta + auto" */
+.nav-toggle {
+  margin-left: auto;
+  width: 46px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 0 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* “Carretera” (hamburguesa) */
+.nav-toggle-road {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.road-line {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Línea central simulando carril punteado */
+.road-line-middle {
+  background: repeating-linear-gradient(
+    to right,
+    #e5e7eb 0 4px,
+    transparent 4px 7px
+  );
+}
+
+/* Autito de frente */
+.nav-toggle-car {
+  width: 16px;
+  height: 10px;
+  border-radius: 6px 6px 4px 4px;
+  background: linear-gradient(135deg, #f59e0b, #facc15);
+  position: relative;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.45);
+  transition: transform 0.15s ease;
+}
+
+/* Ruedas */
+.nav-toggle-car::before,
+.nav-toggle-car::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #020617;
+}
+
+.nav-toggle-car::before {
+  left: 1px;
+}
+
+.nav-toggle-car::after {
+  right: 1px;
+}
+
+/* Estado abierto: la “ruta” se contrae y el auto se inclina */
+.nav-toggle-open .road-line {
+  opacity: 0;
+  transform: scaleX(0.4);
+}
+
+.nav-toggle-open .nav-toggle-car {
+  transform: translateY(-1px) rotate(-8deg);
+}
+
+/* --------- Desktop: nunca mostrar menú mobile ---------- */
+@media (min-width: 881px) {
+  .nav-toggle {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+/* --------- Mobile / Tablet: menú hamburguesa ---------- */
 @media (max-width: 880px) {
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-side-row {
+    flex-direction: column;
   }
 
   .page-two-columns {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .nav-links {
-    display: none;
-  }
-
   .app-main {
     margin-top: 88px;
+    padding: 0 12px 24px;
   }
 
-  .hero-side-row {
+  /* Ocultamos navegación de escritorio */
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-cta {
+    display: none !important;
+  }
+
+  /* Mostramos botón car-menu */
+  .nav-toggle {
+    display: inline-flex !important;
+  }
+
+  /* Contenedor del menú móvil */
+  .mobile-menu {
+    display: none;
     flex-direction: column;
+    gap: 4px;
+    padding: 8px 16px 12px;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 23, 42, 0.96),
+      rgba(15, 23, 42, 0.92)
+    );
+    border-bottom: 1px solid rgba(148, 163, 184, 0.4);
   }
-}
 
-@media (max-width: 768px) {
-  .admin-toolbar {
+  /* Cuando tiene la clase mobile-menu-open se despliega sí o sí */
+  .mobile-menu.mobile-menu-open {
+    display: flex !important;
+  }
+
+  .mobile-nav-link {
+    display: block !important;
+    padding: 8px 0;
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  }
+
+  .mobile-nav-link:last-of-type {
+    border-bottom: none;
+  }
+
+  .mobile-nav-link-active {
+    font-weight: 600;
+    color: #facc15;
+  }
+
+  .mobile-nav-cta {
+    display: inline-flex !important;
+    margin-top: 6px;
+    align-self: flex-start;
+  }
+
+  /* Formularios en columna en pantallas chicas */
+  .form-row {
     flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .admin-table th,
-  .admin-table td {
-    padding: 8px 8px;
-  }
-}
-
-@media (max-width: 640px) {
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
