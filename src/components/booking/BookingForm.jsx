@@ -4,7 +4,6 @@ import { locations } from "../../data/locations";
 const BookingForm = ({ compact = false, defaultIncludeHotel = false }) => {
   const BUSINESS_WHATSAPP =
     import.meta.env.VITE_BUSINESS_WHATSAPP || "5493814571012";
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
   function getInitialForm() {
     return {
@@ -61,21 +60,6 @@ Quiero una cotización en SINERGIA RENT A CAR:
     setLoading(true);
 
     try {
-      // 1) Guardar / notificar en backend (si está disponible)
-      try {
-        await fetch(`${API_URL}/api/reservations`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-      } catch (err) {
-        console.warn(
-          "No se pudo contactar al backend, pero seguimos con WhatsApp:",
-          err
-        );
-      }
-
-      // 2) Abrir WhatsApp del negocio con el detalle
       const text = buildWhatsAppText(form);
       const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(
         text
@@ -168,37 +152,36 @@ Quiero una cotización en SINERGIA RENT A CAR:
           </div>
         </div>
 
-        {/* Retiro y Devolución en columna para evitar que se salga de la card */}
-<div className="form-row form-row-locations">
-  <div className="form-group">
-    <label>Retiro</label>
-    <select
-      name="pickupLocation"
-      value={form.pickupLocation}
-      onChange={handleChange}
-    >
-      {locations.map((loc) => (
-        <option key={loc} value={loc}>
-          {loc}
-        </option>
-      ))}
-    </select>
-  </div>
-  <div className="form-group">
-    <label>Devolución</label>
-    <select
-      name="returnLocation"
-      value={form.returnLocation}
-      onChange={handleChange}
-    >
-      {locations.map((loc) => (
-        <option key={loc} value={loc}>
-          {loc}
-        </option>
-      ))}
-    </select>
-  </div>
-</div>
+        <div className="form-row form-row-locations">
+          <div className="form-group">
+            <label>Retiro</label>
+            <select
+              name="pickupLocation"
+              value={form.pickupLocation}
+              onChange={handleChange}
+            >
+              {locations.map((loc) => (
+                <option key={loc} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Devolución</label>
+            <select
+              name="returnLocation"
+              value={form.returnLocation}
+              onChange={handleChange}
+            >
+              {locations.map((loc) => (
+                <option key={loc} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
 
         <div className="form-row">

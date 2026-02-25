@@ -760,11 +760,86 @@ textarea {
   object-fit: cover;
 }
 
+/* Carousel */
+.fleet-carousel {
+  position: relative;
+  overflow: hidden;
+  height: 170px;
+  background: #111;
+}
+
+.fleet-carousel-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  z-index: 2;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-btn-prev {
+  left: 8px;
+}
+
+.carousel-btn-next {
+  right: 8px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+
+.carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.carousel-dot.active {
+  background: #fff;
+}
+
 .fleet-body {
   padding: 14px 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
 }
 
 .fleet-head {
@@ -784,8 +859,10 @@ textarea {
   color: var(--color-muted);
 }
 
-.fleet-specs li::before {
-  content: "• ";
+.fleet-specs li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .fleet-footer {
@@ -831,10 +908,28 @@ textarea {
   margin-top: 40px;
 }
 
+.hotel-banner-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #fff7ed, #eff6ff);
+}
+
+.hotel-banner-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
 .hotel-banner-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.hotel-banner-content h2 {
+  margin: 0;
 }
 
 .hotel-banner-content ul {
@@ -1129,6 +1224,100 @@ textarea {
 }
 
 /* =========================
+   BADGE CATEGORÍAS FLOTA
+   ========================= */
+
+.badge-economico {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+}
+
+.badge-compacto {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+}
+
+.badge-suv {
+  background: rgba(254, 105, 5, 0.12);
+  color: #c2410c;
+}
+
+.badge-pickup {
+  background: rgba(234, 179, 8, 0.12);
+  color: #92400e;
+}
+
+.badge-van {
+  background: rgba(139, 92, 246, 0.1);
+  color: #6d28d9;
+}
+
+/* =========================
+   FLEET FILTER TABS
+   ========================= */
+
+.fleet-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.fleet-filter-tab {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.fleet-filter-tab:hover {
+  background: #ffffff;
+  color: var(--color-text);
+  border-color: #d1d5db;
+}
+
+.fleet-filter-tab.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* =========================
+   WHATSAPP FAB
+   ========================= */
+
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+
+.wa-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+}
+
+/* =========================
    RESPONSIVE
    ========================= */
 
@@ -1308,5 +1497,16 @@ textarea {
   /* Formularios en columna en pantallas chicas */
   .form-row {
     flex-direction: column;
+  }
+
+  /* WhatsApp FAB: solo ícono en mobile */
+  .wa-fab span {
+    display: none;
+  }
+
+  .wa-fab {
+    padding: 14px;
+    bottom: 16px;
+    right: 16px;
   }
 }

@@ -106,7 +106,6 @@ const HeroHome = () => {
         </div>
       </section>
 
-      {/* De acá para abajo podés sumar más secciones de la home si querés */}
     </div>
   );
 };

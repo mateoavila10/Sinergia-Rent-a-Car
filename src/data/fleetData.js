@@ -1,62 +1,77 @@
 export const fleetData = [
   {
     id: 1,
-    name: "Económico Ciudad",
+    name: "Renault Logan o similar",
     category: "Económico",
     passengers: 4,
     luggage: 2,
     transmission: "Manual",
     ac: true,
     priceFrom: 24500,
-    image:
+    images: [
       "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1164778/pexels-photo-1164778.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
   },
   {
     id: 2,
-    name: "Compacto Automático",
+    name: "Fiat Cronos o similar",
     category: "Compacto",
     passengers: 5,
     luggage: 3,
     transmission: "Automática",
     ac: true,
     priceFrom: 29800,
-    image:
+    images: [
       "https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
   },
   {
     id: 3,
-    name: "SUV Norte Argentino",
+    name: "Chery Tiggo o similar",
     category: "SUV",
     passengers: 5,
     luggage: 4,
     transmission: "Automática",
     ac: true,
     priceFrom: 38500,
-    image:
+    images: [
       "https://images.pexels.com/photos/2100193/pexels-photo-2100193.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
   },
   {
     id: 4,
-    name: "Pick-Up 4x4",
+    name: "Toyota Hilux o similar",
     category: "Pick-Up",
     passengers: 5,
     luggage: 4,
     transmission: "Manual",
     ac: true,
     priceFrom: 45200,
-    image:
+    images: [
       "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
   },
   {
     id: 5,
-    name: "Van 7 Pax Familiar",
+    name: "Renault Traffic o similar",
     category: "Van",
     passengers: 7,
     luggage: 5,
     transmission: "Automática",
     ac: true,
     priceFrom: 51500,
-    image:
+    images: [
       "https://images.pexels.com/photos/977003/pexels-photo-977003.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1007410/pexels-photo-1007410.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1392432/pexels-photo-1392432.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
   },
 ];
