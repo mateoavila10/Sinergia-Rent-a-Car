@@ -15,7 +15,13 @@ const NewsSection = () => {
       <div className="news-grid">
         {newsData.map((item) => (
           <article key={item.id} className="card news-card">
-            <span className="badge badge-soft">{item.tag}</span>
+            <span className="news-card-icon">{item.icon}</span>
+            <div>
+              <span className="badge badge-soft">{item.tag}</span>
+              {item.date && (
+                <span className="news-card-date"> · {item.date}</span>
+              )}
+            </div>
             <h3>{item.title}</h3>
             <p>{item.summary}</p>
           </article>

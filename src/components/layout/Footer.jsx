@@ -10,49 +10,46 @@ export default function Footer() {
             Movilidad profesional en Tucumán y el Norte Argentino. Autos, SUVs,
             pick-ups y vans para trabajo, turismo y familia.
           </p>
-          <p style={{ marginTop: 8 }}>
-            <a
-              href="https://wa.me/5493814571012"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "#4ade80", textDecoration: "none" }}
-            >
+          <p className="footer-contact-row">
+            <a href="https://wa.me/5493814571012" target="_blank" rel="noreferrer" className="footer-link-accent">
               WhatsApp: +54 9 381 457‑1012
             </a>
           </p>
         </div>
+
         <div>
           <h5>Navegación</h5>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-            <li><Link to="/" style={{ color: "#9ca3af", textDecoration: "none" }}>Inicio</Link></li>
-            <li><Link to="/flota" style={{ color: "#9ca3af", textDecoration: "none" }}>Flota</Link></li>
-            <li><Link to="/reservas" style={{ color: "#9ca3af", textDecoration: "none" }}>Reservar</Link></li>
-            <li><Link to="/hotel-castillo-de-piedra" style={{ color: "#9ca3af", textDecoration: "none" }}>Hotel Castillo de Piedra</Link></li>
-            <li><Link to="/empresa" style={{ color: "#9ca3af", textDecoration: "none" }}>Sobre Nosotros</Link></li>
-            <li><Link to="/contacto" style={{ color: "#9ca3af", textDecoration: "none" }}>Contacto</Link></li>
+          <ul className="footer-nav-list">
+            <li><Link to="/" className="footer-link">Inicio</Link></li>
+            <li><Link to="/flota" className="footer-link">Flota</Link></li>
+            <li><Link to="/reservas" className="footer-link">Reservar</Link></li>
+            <li><Link to="/hotel-castillo-de-piedra" className="footer-link">Hotel Castillo de Piedra</Link></li>
+            <li><Link to="/empresa" className="footer-link">Sobre Nosotros</Link></li>
+            <li><Link to="/contacto" className="footer-link">Contacto</Link></li>
           </ul>
         </div>
+
         <div>
           <h5>Contacto</h5>
-          <p>Tel: +54 9 381 457‑1012</p>
-          <p>Email: info@sinergiarentacar.com.ar</p>
-          <p>San Miguel de Tucumán, Argentina</p>
-          <p style={{ marginTop: 8 }}>
-            <a
-              href="https://www.instagram.com/sinergiarentacar"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "#9ca3af", textDecoration: "none" }}
-            >
-              Instagram: @sinergiarentacar
+          <p className="footer-contact-row">Tel: +54 9 381 457‑1012</p>
+          <p className="footer-contact-row">
+            <a href="mailto:info@sinergiarentacar.com.ar" className="footer-link-secondary">
+              info@sinergiarentacar.com.ar
+            </a>
+          </p>
+          <p className="footer-contact-row">San Miguel de Tucumán, Argentina</p>
+          <p className="footer-contact-row">
+            <a href="https://www.instagram.com/sinergiarentacar" target="_blank" rel="noreferrer" className="footer-link-secondary">
+              @sinergiarentacar
             </a>
           </p>
         </div>
+
         <div>
           <h5>Horarios</h5>
-          <p>Lunes a Domingo</p>
-          <p>07:30 a 23:30 hs</p>
-          <p style={{ marginTop: 8, fontSize: "0.8rem", color: "#6b7280" }}>
+          <p className="footer-contact-row">Lunes a Domingo</p>
+          <p className="footer-contact-row">07:30 a 23:30 hs</p>
+          <p className="footer-contact-row footer-muted-note">
             Entregas en aeropuerto, ciudad y Hotel Castillo de Piedra (Tafí del Valle).
           </p>
         </div>

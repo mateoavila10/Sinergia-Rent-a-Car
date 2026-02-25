@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import NavLink from "./NavLink";
+import logo from "../../assets/Logo Sinergia.jpeg";
 
 const navItems = [
   { to: "/", label: "Inicio" },
@@ -27,7 +28,7 @@ const Header = () => {
     <header className="top-nav">
       <div className="top-nav-inner">
         <Link to="/" className="brand" onClick={() => setIsMobileOpen(false)}>
-          <span className="brand-logo">S</span>
+          <img src={logo} alt="Sinergia Rent a Car" className="brand-logo-img" />
           <div className="brand-text">
             <span className="brand-name">SINERGIA</span>
             <span className="brand-subtitle">RENT A CAR</span>

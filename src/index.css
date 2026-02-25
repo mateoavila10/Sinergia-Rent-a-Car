@@ -1,13 +1,16 @@
 :root {
-  --color-primary: #FE6905; /* naranja */
-  --color-primary-dark:#E05804 ;
-  --color-secondary: #2563eb; /* azul */
+  --color-primary: #FE6905;
+  --color-primary-dark: #E05804;
+  --color-secondary: #2563eb;
   --color-bg: #f3f4f6;
   --color-surface: #ffffff;
   --color-text: #111827;
   --color-muted: #6b7280;
   --radius-lg: 1.25rem;
-  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+  --radius-md: 0.75rem;
+  --shadow-soft: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 1px 4px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.08);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* RESET / BASE */
@@ -18,10 +21,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: radial-gradient(
     circle at top,
     #e0f2fe 0,
@@ -29,6 +37,12 @@ body {
     #eef2ff 100%
   );
   color: var(--color-text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 #root {
@@ -96,6 +110,14 @@ body {
   justify-content: center;
   font-weight: 800;
   color: #ffffff;
+}
+
+.brand-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 .brand-text {
@@ -339,7 +361,8 @@ body {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
   padding: 16px 18px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
 }
 
 /* =========================
@@ -752,6 +775,12 @@ textarea {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.fleet-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.14);
 }
 
 .fleet-image {
@@ -866,20 +895,33 @@ textarea {
 }
 
 .fleet-footer {
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.fleet-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
 .fleet-price-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 500;
   color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .fleet-price {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
 /* =========================
@@ -976,6 +1018,34 @@ textarea {
 
 .booking-info-card ul {
   padding-left: 18px;
+}
+
+.booking-req-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-req-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.booking-req-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.booking-info-card h3 {
+  margin: 0 0 4px;
 }
 
 .muted {
@@ -1210,6 +1280,12 @@ textarea {
   gap: 10px;
 }
 
+.footer-muted-note {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
 .footer-admin-link {
   font-size: 0.7rem;
   color: #9ca3af;
@@ -1221,6 +1297,169 @@ textarea {
 .footer-admin-link:hover {
   opacity: 1;
   color: #4b5563;
+}
+
+/* =========================
+   FOOTER LINKS (clases para evitar inline styles)
+   ========================= */
+
+.footer-link {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  font-size: 0.85rem;
+}
+
+.footer-link:hover {
+  color: #e5e7eb;
+}
+
+.footer-link-accent {
+  color: #4ade80;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-link-accent:hover {
+  color: #86efac;
+}
+
+.footer-link-secondary {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-link-secondary:hover {
+  color: #93c5fd;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-contact-row {
+  margin: 4px 0;
+  font-size: 0.85rem;
+}
+
+/* =========================
+   SECTION HEADER ACCENT
+   ========================= */
+
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+/* =========================
+   PAGE HEADER ACCENT
+   ========================= */
+
+.page-header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+  margin-bottom: 4px;
+}
+
+.page-header h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.page-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+/* =========================
+   STATS ROW (About page)
+   ========================= */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* =========================
+   NEWS CARDS MEJORADAS
+   ========================= */
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+.news-card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.news-card-date {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* =========================

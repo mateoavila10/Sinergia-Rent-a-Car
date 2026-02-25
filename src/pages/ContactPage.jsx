@@ -32,14 +32,14 @@ const ContactPage = () => {
             <p>
               <strong>Email:</strong>{" "}
               <a
-                href="mailto:info@sinergiarentacar.com.ar"
+                href="mailto:sinergiarentacar@gmail.com"
                 style={{ color: "var(--color-secondary)" }}
               >
                 info@sinergiarentacar.com.ar
               </a>
             </p>
             <p>
-              <strong>Sede central:</strong> San Miguel de Tucumán, Argentina
+              <strong>Sede central:</strong> Av. Soldati 380, San Miguel de Tucumán, Tucumán
             </p>
             <p>
               <strong>Instagram:</strong>{" "}

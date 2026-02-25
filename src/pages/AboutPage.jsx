@@ -117,6 +117,38 @@ const AboutPage = () => {
         </div>
       </div>
 
+      {/* Estadísticas clave */}
+      <section className="section">
+        <div className="section-header">
+          <div>
+            <h2>Sinergia en números</h2>
+            <p>Resultados que respaldan nuestra forma de trabajar.</p>
+          </div>
+        </div>
+        <div className="stats-row">
+          <div className="stat-card">
+            <span className="stat-value">60+</span>
+            <p className="stat-label">Vehículos activos</p>
+          </div>
+          <div className="stat-card">
+            <span className="stat-value">98%</span>
+            <p className="stat-label">Puntualidad en entregas</p>
+          </div>
+          <div className="stat-card">
+            <span className="stat-value">24/7</span>
+            <p className="stat-label">Asistencia disponible</p>
+          </div>
+          <div className="stat-card">
+            <span className="stat-value">5+</span>
+            <p className="stat-label">Puntos de entrega</p>
+          </div>
+          <div className="stat-card">
+            <span className="stat-value">16hs</span>
+            <p className="stat-label">Horario de atención diaria</p>
+          </div>
+        </div>
+      </section>
+
       {/* Bloque extra: cobertura y enfoque regional */}
       <section className="section">
         <div className="card">

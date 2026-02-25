@@ -118,11 +118,11 @@ const FleetGrid = ({ showFilter = false }) => {
               <ul className="fleet-specs">
                 <li>
                   <span>👤</span>
-                  {car.passengers} pas.
+                  {car.passengers} pasajeros
                 </li>
                 <li>
                   <span>🧳</span>
-                  {car.luggage} val.
+                  {car.luggage} valijas
                 </li>
                 <li>
                   <span>⚙️</span>
@@ -136,7 +136,7 @@ const FleetGrid = ({ showFilter = false }) => {
                 )}
               </ul>
               <div className="fleet-footer">
-                <div>
+                <div className="fleet-price-block">
                   <span className="fleet-price-label">Desde</span>
                   <span className="fleet-price">
                     ${car.priceFrom.toLocaleString("es-AR")}/día
