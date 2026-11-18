@@ -1,6 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { fleetData } from "../../data/fleetData";
+import Photo from "../common/Photo";
+
+// Se muestra mientras no esté la foto real del vehículo en public/fotos/flota/
+function FleetPhotoPending({ category }) {
+  return (
+    <div className="fleet-image fleet-image-pending" role="img" aria-label={`${category}: foto próximamente`}>
+      <svg viewBox="0 0 64 28" aria-hidden="true">
+        <path d="M4 20v-5l6-1 7-6h20l9 6 10 1.5c2 .3 4 2 4 4V20" />
+        <path d="M2 20h60" />
+        <circle cx="16" cy="21" r="4" />
+        <circle cx="48" cy="21" r="4" />
+        <path d="M19 9.5 17 14h29l-7-4.5" />
+      </svg>
+      <span>Foto próximamente</span>
+    </div>
+  );
+}
 
 const FleetGrid = ({ showFilter = false }) => {
   const [category, setCategory] = useState("Todas");
@@ -40,7 +57,12 @@ const FleetGrid = ({ showFilter = false }) => {
       <div className="fleet-grid">
         {filteredFleet.map((car) => (
           <article key={car.id} className="card fleet-card">
-            <img src={car.image} alt={car.name} className="fleet-image" />
+            <Photo
+              src={car.image}
+              alt={car.name}
+              className="fleet-image"
+              fallback={<FleetPhotoPending category={car.category} />}
+            />
             <div className="fleet-body">
               <div className="fleet-head">
                 <span className="badge">{car.category}</span>
