@@ -30,3 +30,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Conexión local con Vercel
+.vercel
