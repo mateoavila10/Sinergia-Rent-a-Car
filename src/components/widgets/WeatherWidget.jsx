@@ -1,54 +1,28 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function WeatherWidget({ city, countryCode }) {
+// En Vercel la key se llama OPENWEATHER_KEY; en local puede ser VITE_OPENWEATHER_KEY.
+const API_KEY = import.meta.env.OPENWEATHER_KEY || import.meta.env.VITE_OPENWEATHER_KEY;
+
+const MSG_ERROR = "No pudimos mostrar el clima ahora. Probá de nuevo en unos minutos.";
+const MSG_OFFLINE = "Sin conexión: no pudimos traer el clima.";
+
+function WeatherWidget({ city, countryCode, label }) {
   const [weather, setWeather] = useState(null);
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error | offline
-  const [errorMessage, setErrorMessage] = useState("");
+  const [status, setStatus] = useState(API_KEY ? "loading" : "error");
 
   useEffect(() => {
-    const API_KEY =
-      import.meta.env.OPENWEATHER_KEY || import.meta.env.VITE_OPENWEATHER_KEY;
-
-    if (!API_KEY) {
-      console.warn("No hay OPENWEATHER_KEY (o VITE_OPENWEATHER_KEY) configurada");
-      setStatus("error");
-      setErrorMessage(
-        "Clima no disponible en este entorno. Falta configurar la API de clima."
-      );
-      return;
-    }
+    if (!API_KEY) return;
+    let cancelled = false;
 
     async function fetchWeather() {
-      // Sin conexión a internet
-      if (!navigator.onLine) {
-        setStatus("offline");
-        setErrorMessage(
-          "No pudimos conectar para traer el clima. Verificá tu conexión a internet."
-        );
-        return;
-      }
-
       try {
-        setStatus("loading");
-
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
           city
         )},${countryCode}&units=metric&lang=es&appid=${API_KEY}`;
-
         const res = await fetch(url);
-
-        if (!res.ok) {
-          const errorText = await res.text();
-          console.error("OpenWeather no OK:", res.status, res.statusText, errorText);
-          setStatus("error");
-          setErrorMessage(
-            "No pudimos mostrar el clima ahora. Intentá nuevamente en unos minutos."
-          );
-          return;
-        }
-
+        if (!res.ok) throw new Error(`OpenWeather ${res.status}`);
         const data = await res.json();
-
+        if (cancelled) return;
         setWeather({
           temp: Math.round(data.main.temp),
           feelsLike: Math.round(data.main.feels_like),
@@ -56,46 +30,34 @@ function WeatherWidget({ city, countryCode }) {
         });
         setStatus("success");
       } catch (err) {
-        console.error("Error en fetchWeather:", err);
-
-        if (!navigator.onLine) {
-          setStatus("offline");
-          setErrorMessage(
-            "No pudimos conectar para traer el clima. Verificá tu conexión a internet."
-          );
-        } else {
-          setStatus("error");
-          setErrorMessage(
-            "No pudimos mostrar el clima ahora. Verificá tu conexión o la API de clima."
-          );
-        }
+        console.error("Clima:", err);
+        if (!cancelled) setStatus(navigator.onLine ? "error" : "offline");
       }
     }
 
     fetchWeather();
+    return () => {
+      cancelled = true;
+    };
   }, [city, countryCode]);
 
   return (
-    <div className="card widget">
+    <section className="card widget" aria-live="polite">
       <h2 className="widget-title">Clima ahora</h2>
-      <p className="widget-city">{city}</p>
+      <p className="widget-city">{label || city}</p>
 
-      {status === "loading" && <p>Cargando clima…</p>}
-
-      {(status === "error" || status === "offline") && (
-        <p className="widget-error">{errorMessage}</p>
-      )}
+      {status === "loading" && <p className="widget-error">Cargando clima…</p>}
+      {status === "error" && <p className="widget-error">{MSG_ERROR}</p>}
+      {status === "offline" && <p className="widget-error">{MSG_OFFLINE}</p>}
 
       {status === "success" && weather && (
         <div className="widget-weather-main">
           <span className="widget-temp">{weather.temp}°C</span>
           <p className="widget-desc">{weather.desc}</p>
-          <p className="widget-feels">
-            Sensación térmica: {weather.feelsLike}°C
-          </p>
+          <p className="widget-feels">Sensación térmica: {weather.feelsLike}°C</p>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

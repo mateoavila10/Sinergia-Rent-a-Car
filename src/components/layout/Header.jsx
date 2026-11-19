@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import NavLink from "./NavLink";
+import { Link, NavLink } from "react-router-dom";
+import LocalClock from "../board/LocalClock";
+import { whatsappUrl } from "../../data/site";
 
 const navItems = [
-  { to: "/", label: "Inicio" },
   { to: "/flota", label: "Flota" },
   { to: "/reservas", label: "Reservar" },
-  { to: "/clima-novedades", label: "Clima & Novedades" },
+  { to: "/clima-novedades", label: "Clima y ruta" },
   { to: "/hotel-castillo-de-piedra", label: "Castillo de Piedra" },
-  { to: "/empresa", label: "Sobre Nosotros" },
+  { to: "/empresa", label: "Empresa" },
   { to: "/contacto", label: "Contacto" },
 ];
 
 const Header = () => {
-  const location = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
-  const toggleMobile = () => setIsMobileOpen((prev) => !prev);
   const closeMobile = () => setIsMobileOpen(false);
 
   // Cerrar el menú con Escape y devolver el foco al botón
@@ -32,85 +29,84 @@ const Header = () => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [isMobileOpen]);
 
+  const linkClass = ({ isActive }) => `nav-link${isActive ? " is-active" : ""}`;
+  const mobileClass = ({ isActive }) => `mobile-link${isActive ? " is-active" : ""}`;
+
   return (
     <header className="top-nav">
       <div className="top-nav-inner">
-        <Link to="/" className="brand" onClick={closeMobile}>
-          <span className="brand-logo">S</span>
-          <div className="brand-text">
-            <span className="brand-name">SINERGIA</span>
-            <span className="brand-subtitle">RENT A CAR</span>
-          </div>
+        <Link to="/" className="brand" onClick={closeMobile} aria-label="Sinergia Rent a Car, inicio">
+          <img
+            src="/marca/logo-horizontal-oscuro.png"
+            alt=""
+            width="193"
+            height="50"
+            className="brand-logo"
+          />
+          <img
+            src="/marca/isotipo-sinergia-oscuro.png"
+            alt=""
+            width="40"
+            height="34"
+            className="brand-mark"
+          />
         </Link>
 
-        {/* NAV DESKTOP */}
         <nav className="nav-links" aria-label="Navegación principal">
           {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              label={item.label}
-              currentPath={location.pathname}
-            />
+            <NavLink key={item.to} to={item.to} className={linkClass}>
+              {item.label}
+            </NavLink>
           ))}
         </nav>
 
-        {/* CTA DESKTOP */}
-        <a
-          href="https://wa.me/5493814571012"
-          target="_blank"
-          rel="noreferrer"
-          className="nav-cta"
-        >
+        <LocalClock className="nav-clock" />
+
+        <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="btn btn-signal nav-cta">
           WhatsApp
         </a>
 
-        {/* BOTÓN CAR-MENÚ (MÓVIL) */}
         <button
           type="button"
-          className={`nav-toggle ${isMobileOpen ? "nav-toggle-open" : ""}`}
+          className={`nav-toggle${isMobileOpen ? " is-open" : ""}`}
           id="nav-toggle"
-          aria-label={isMobileOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+          aria-label={isMobileOpen ? "Cerrar menú" : "Abrir menú"}
           aria-controls="mobile-menu"
           aria-expanded={isMobileOpen}
-          onClick={toggleMobile}
+          onClick={() => setIsMobileOpen((v) => !v)}
         >
-          <span className="nav-toggle-road">
-            <span className="road-line" />
-            <span className="road-line road-line-middle" />
-            <span className="road-line" />
-          </span>
-          <span className="nav-toggle-car" />
+          <span />
+          <span />
+          <span />
         </button>
       </div>
 
-      {/* MENÚ MÓVIL */}
       <nav
         id="mobile-menu"
         aria-label="Menú móvil"
-        className={`mobile-menu ${isMobileOpen ? "mobile-menu-open" : ""}`}
+        className={`mobile-menu${isMobileOpen ? " is-open" : ""}`}
       >
-        {navItems.map((item) => (
-          <Link
-            key={item.to}
-            to={item.to}
-            onClick={closeMobile}
-            className={`mobile-nav-link ${
-              location.pathname === item.to ? "mobile-nav-link-active" : ""
-            }`}
-          >
+        <NavLink to="/" end className={mobileClass} onClick={closeMobile}>
+          <span className="mobile-link-n" aria-hidden="true">00</span>
+          Inicio
+        </NavLink>
+        {navItems.map((item, i) => (
+          <NavLink key={item.to} to={item.to} onClick={closeMobile} className={mobileClass}>
+            <span className="mobile-link-n" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
             {item.label}
-          </Link>
+          </NavLink>
         ))}
-
+        <LocalClock className="mobile-clock" />
         <a
-          href="https://wa.me/5493814571012"
+          href={whatsappUrl()}
           target="_blank"
           rel="noreferrer"
-          className="btn btn-primary mobile-nav-cta"
+          className="btn btn-signal btn-block"
           onClick={closeMobile}
         >
-          WhatsApp
+          Escribinos por WhatsApp
         </a>
       </nav>
     </header>

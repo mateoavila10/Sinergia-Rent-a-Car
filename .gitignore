@@ -33,3 +33,8 @@ dist/
 
 # Conexión local con Vercel
 .vercel
+
+# Herramientas locales
+.playwright-mcp
+.impeccable/questions/
+.impeccable/decision-payload.json

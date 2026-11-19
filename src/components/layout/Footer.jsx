@@ -1,30 +1,60 @@
+import { Link } from "react-router-dom";
+import { site, whatsappUrl } from "../../data/site";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <div>
-          <h2 className="footer-title">SINERGIA RENT A CAR</h2>
+        <div className="footer-brand">
+          <img
+            src="/marca/logo-sinergia-oscuro.png"
+            alt="Sinergia Rent a Car"
+            width="168"
+            height="98"
+          />
           <p>
-            Movilidad profesional en Tucumán y el Norte Argentino. Autos, vans y
-            camionetas para tus viajes de trabajo o descanso.
+            Alquiler de autos, SUVs, pick-ups y vans en Tucumán y el Norte
+            Argentino.
           </p>
         </div>
+
         <div>
           <h2 className="footer-title">Contacto</h2>
-          <p>Tel: +54 9 381 457 1012</p>
-          <p>Email: info@sinergiarentacar.com.ar</p>
-          <p>Central: San Miguel de Tucumán, Argentina</p>
+          <ul className="footer-list">
+            <li>
+              <a href={whatsappUrl()} target="_blank" rel="noreferrer">
+                WhatsApp {site.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </li>
+            <li>
+              <a href={site.mapsUrl} target="_blank" rel="noreferrer">
+                {site.address}
+              </a>
+            </li>
+          </ul>
         </div>
+
         <div>
-          <h2 className="footer-title">Horarios</h2>
-          <p>Lunes a Domingo: 07:30 a 23:30 hs</p>
+          <h2 className="footer-title">Horario</h2>
+          <p className="footer-hours">{site.hours}</p>
+        </div>
+
+        <div>
+          <h2 className="footer-title">Sitio</h2>
+          <ul className="footer-list">
+            <li><Link to="/flota">Flota</Link></li>
+            <li><Link to="/reservas">Reservar</Link></li>
+            <li><Link to="/hotel-castillo-de-piedra">Castillo de Piedra</Link></li>
+            <li><Link to="/empresa">Empresa</Link></li>
+          </ul>
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Sinergia Rent a Car</span>
-        <div className="footer-bottom-right">
-          <span>Hecho con React • Diseño orientado a conversión</span>
-        </div>
+        <span>© {new Date().getFullYear()} {site.name}</span>
+        <span>San Miguel de Tucumán · Argentina</span>
       </div>
     </footer>
   );

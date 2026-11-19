@@ -6,11 +6,11 @@ export default function FleetPage() {
       <header className="page-header">
         <h1>Nuestra flota</h1>
         <p>
-          Elegí el vehículo que mejor se adapte a tu tipo de viaje: trabajo,
-          escapada de fin de semana o vacaciones en familia.
+          Elegí el vehículo según tu viaje: trabajo, escapada de fin de semana
+          o vacaciones en familia por el Norte.
         </p>
       </header>
-      <FleetGrid showFilter />
+      <FleetGrid showFilter title="Categorías y precios" />
     </div>
   );
 }

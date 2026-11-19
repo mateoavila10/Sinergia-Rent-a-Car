@@ -1,94 +1,90 @@
-import React, { useState } from "react";
+import { useId, useState } from "react";
 import { Link } from "react-router-dom";
 import { fleetData } from "../../data/fleetData";
 import Photo from "../common/Photo";
+import { CarIcon } from "../common/Icons";
 
-// Se muestra mientras no esté la foto real del vehículo en public/fotos/flota/
-function FleetPhotoPending({ category }) {
+// Miniatura mientras no esté la foto real del vehículo en public/fotos/flota/
+function PhotoPending({ name }) {
   return (
-    <div className="fleet-image fleet-image-pending" role="img" aria-label={`${category}: foto próximamente`}>
-      <svg viewBox="0 0 64 28" aria-hidden="true">
-        <path d="M4 20v-5l6-1 7-6h20l9 6 10 1.5c2 .3 4 2 4 4V20" />
-        <path d="M2 20h60" />
-        <circle cx="16" cy="21" r="4" />
-        <circle cx="48" cy="21" r="4" />
-        <path d="M19 9.5 17 14h29l-7-4.5" />
-      </svg>
+    <span className="fleet-thumb fleet-thumb-pending" role="img" aria-label={`${name}: foto próximamente`}>
+      <CarIcon className="fleet-thumb-icon" />
       <span>Foto próximamente</span>
-    </div>
+    </span>
   );
 }
 
-const FleetGrid = ({ showFilter = false }) => {
+// La flota como tablero de salidas: una fila por categoría.
+const FleetGrid = ({ showFilter = false, headingLevel = 2, title = "Flota" }) => {
+  const uid = useId();
   const [category, setCategory] = useState("Todas");
-
   const categories = ["Todas", ...new Set(fleetData.map((c) => c.category))];
-
-  const filteredFleet =
-    category === "Todas"
-      ? fleetData
-      : fleetData.filter((c) => c.category === category);
+  const filtered = category === "Todas" ? fleetData : fleetData.filter((c) => c.category === category);
+  const H = `h${headingLevel}`;
+  const RowH = `h${headingLevel + 1}`;
 
   return (
-    <section className="section">
-      <div className="section-header">
-        <div>
-          <h2>Flota disponible</h2>
-          <p>
-            Autos pensados para ciudad, rutas y montaña. Elegí el grupo según
-            tu tipo de viaje.
-          </p>
-        </div>
-        {showFilter && (
-          <div className="fleet-filter">
-            <label htmlFor="fleet-category">Categoría</label>
-            <select
-              id="fleet-category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              {categories.map((cat) => (
-                <option key={cat}>{cat}</option>
-              ))}
-            </select>
+    <section className="band fleet" aria-labelledby={`${uid}-title`}>
+      <div className="band-inner">
+        <div className="band-head">
+          <div>
+            <H id={`${uid}-title`} className="band-title">{title}</H>
+            <p className="band-sub">
+              Para ciudad, rutas de montaña y caminos exigentes. Precios de referencia por día.
+            </p>
           </div>
-        )}
-      </div>
-
-      <div className="fleet-grid">
-        {filteredFleet.map((car) => (
-          <article key={car.id} className="card fleet-card">
-            <Photo
-              src={car.image}
-              alt={car.name}
-              className="fleet-image"
-              fallback={<FleetPhotoPending category={car.category} />}
-            />
-            <div className="fleet-body">
-              <div className="fleet-head">
-                <span className="badge">{car.category}</span>
-                <h3>{car.name}</h3>
-              </div>
-              <ul className="fleet-specs">
-                <li>{car.passengers} pasajeros</li>
-                <li>{car.luggage} valijas</li>
-                <li>{car.transmission}</li>
-                <li>{car.ac ? "A/C" : "Sin A/C"}</li>
-              </ul>
-              <div className="fleet-footer">
-                <div>
-                  <span className="fleet-price-label">Desde</span>
-                  <span className="fleet-price">
-                    ${car.priceFrom.toLocaleString("es-AR")}/día
-                  </span>
-                </div>
-                <Link to="/reservas" className="btn btn-primary btn-sm">
-                  Reservar
-                </Link>
-              </div>
+          {showFilter && (
+            <div className="fleet-filter">
+              <label htmlFor={`${uid}-cat`}>Categoría</label>
+              <select id={`${uid}-cat`} value={category} onChange={(e) => setCategory(e.target.value)}>
+                {categories.map((cat) => (
+                  <option key={cat}>{cat}</option>
+                ))}
+              </select>
             </div>
-          </article>
-        ))}
+          )}
+        </div>
+
+        <div className="fleet-cols" aria-hidden="true">
+          <span>Vehículo</span>
+          <span>Capacidad</span>
+          <span>Desde / día</span>
+          <span />
+        </div>
+        <ul className="fleet-rows">
+          {filtered.map((car) => (
+            <li key={car.id} className="fleet-row">
+              <Photo
+                src={car.image}
+                alt={car.name}
+                className="fleet-thumb"
+                fallback={<PhotoPending name={car.name} />}
+              />
+              <div className="fleet-id">
+                <RowH className="fleet-name">{car.name}</RowH>
+                <p className="fleet-meta">
+                  {car.transmission} · {car.ac ? "Aire acondicionado" : "Sin aire"}
+                </p>
+              </div>
+              <p className="fleet-cap">
+                {car.passengers} pasajeros<span aria-hidden="true"> · </span>
+                <br className="fleet-br" />
+                {car.luggage} valijas
+              </p>
+              <p className="fleet-price">
+                <span className="sr-only">Desde </span>${car.priceFrom.toLocaleString("es-AR")}
+                <span className="sr-only"> por día</span>
+              </p>
+              <Link
+                to={`/reservas?categoria=${encodeURIComponent(car.category)}`}
+                className="btn btn-signal fleet-cta"
+                aria-label={`Cotizar ${car.name}`}
+              >
+                Cotizar
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

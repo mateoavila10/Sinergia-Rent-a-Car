@@ -1,9 +1,8 @@
-import React, { useId, useState } from "react";
+import { useId, useState } from "react";
+import { whatsappUrl } from "../../data/site";
 
 const ContactForm = () => {
   const uid = useId();
-  const BUSINESS_WHATSAPP =
-    import.meta.env.VITE_BUSINESS_WHATSAPP || "5493814571012";
 
   const [form, setForm] = useState({
     name: "",
@@ -23,7 +22,7 @@ const ContactForm = () => {
     return `
 Hola, soy ${data.name}.
 
-Te escribo desde el formulario de contacto de la web de SINERGIA RENT A CAR.
+Te escribo desde el formulario de contacto de la web de Sinergia Rent a Car.
 
 Datos de contacto:
 - Email: ${data.email}
@@ -43,9 +42,7 @@ ${data.message}
 
     try {
       const text = buildWhatsAppText(form);
-      const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(
-        text
-      )}`;
+      const waUrl = whatsappUrl(text);
 
       window.open(waUrl, "_blank");
       setSent(true);
@@ -98,14 +95,14 @@ ${data.message}
       </div>
       <button
         type="submit"
-        className="btn btn-primary btn-full"
+        className="btn btn-signal btn-block btn-lg"
         disabled={loading}
       >
         {loading ? "Abriendo WhatsApp..." : "Enviar mensaje por WhatsApp"}
       </button>
 
       {sent && (
-        <p className="form-success">
+        <p className="form-success" role="status">
           Te abrimos WhatsApp con tu mensaje. Solo tenés que enviarlo.
         </p>
       )}
