@@ -6,10 +6,11 @@ function WeatherWidget({ city, countryCode }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const API_KEY = import.meta.env.VITE_OPENWEATHER_KEY;
+    const API_KEY =
+      import.meta.env.OPENWEATHER_KEY || import.meta.env.VITE_OPENWEATHER_KEY;
 
     if (!API_KEY) {
-      console.warn("No hay VITE_OPENWEATHER_KEY configurada en el .env");
+      console.warn("No hay OPENWEATHER_KEY (o VITE_OPENWEATHER_KEY) configurada");
       setStatus("error");
       setErrorMessage(
         "Clima no disponible en este entorno. Falta configurar la API de clima."
