@@ -17,16 +17,25 @@ const Header = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const toggleMobile = () => setIsMobileOpen((prev) => !prev);
+  const closeMobile = () => setIsMobileOpen(false);
 
-  // Cerrar el menú cuando se cambia de ruta
+  // Cerrar el menú con Escape y devolver el foco al botón
   useEffect(() => {
-    setIsMobileOpen(false);
-  }, [location.pathname]);
+    if (!isMobileOpen) return;
+    function onKeyDown(e) {
+      if (e.key === "Escape") {
+        setIsMobileOpen(false);
+        document.getElementById("nav-toggle")?.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isMobileOpen]);
 
   return (
     <header className="top-nav">
       <div className="top-nav-inner">
-        <Link to="/" className="brand" onClick={() => setIsMobileOpen(false)}>
+        <Link to="/" className="brand" onClick={closeMobile}>
           <span className="brand-logo">S</span>
           <div className="brand-text">
             <span className="brand-name">SINERGIA</span>
@@ -35,7 +44,7 @@ const Header = () => {
         </Link>
 
         {/* NAV DESKTOP */}
-        <nav className="nav-links">
+        <nav className="nav-links" aria-label="Navegación principal">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -60,7 +69,9 @@ const Header = () => {
         <button
           type="button"
           className={`nav-toggle ${isMobileOpen ? "nav-toggle-open" : ""}`}
-          aria-label="Abrir menú de navegación"
+          id="nav-toggle"
+          aria-label={isMobileOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+          aria-controls="mobile-menu"
           aria-expanded={isMobileOpen}
           onClick={toggleMobile}
         >
@@ -74,13 +85,16 @@ const Header = () => {
       </div>
 
       {/* MENÚ MÓVIL */}
-      <div
+      <nav
+        id="mobile-menu"
+        aria-label="Menú móvil"
         className={`mobile-menu ${isMobileOpen ? "mobile-menu-open" : ""}`}
       >
         {navItems.map((item) => (
           <Link
             key={item.to}
             to={item.to}
+            onClick={closeMobile}
             className={`mobile-nav-link ${
               location.pathname === item.to ? "mobile-nav-link-active" : ""
             }`}
@@ -94,10 +108,11 @@ const Header = () => {
           target="_blank"
           rel="noreferrer"
           className="btn btn-primary mobile-nav-cta"
+          onClick={closeMobile}
         >
           WhatsApp
         </a>
-      </div>
+      </nav>
     </header>
   );
 };

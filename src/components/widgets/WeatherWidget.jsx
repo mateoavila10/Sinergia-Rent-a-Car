@@ -76,7 +76,7 @@ function WeatherWidget({ city, countryCode }) {
 
   return (
     <div className="card widget">
-      <h4>Clima ahora</h4>
+      <h2 className="widget-title">Clima ahora</h2>
       <p className="widget-city">{city}</p>
 
       {status === "loading" && <p>Cargando clima…</p>}

@@ -6,10 +6,6 @@ const HeroHome = () => {
   return (
     <div className="page home-page">
       <section className="hero">
-        {/* Orbes de fondo */}
-        <div className="hero-bg-orb hero-bg-orb-1" />
-        <div className="hero-bg-orb hero-bg-orb-2" />
-
         <div className="hero-grid">
           {/* Columna izquierda: texto principal */}
           <div className="hero-main">
