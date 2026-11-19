@@ -1,109 +1,70 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import WeatherWidget from "../widgets/WeatherWidget";
+import { useState } from "react";
+import SplitFlap from "../board/SplitFlap";
+import QuoteTicket from "../booking/QuoteTicket";
+import { pickupPoints } from "../../data/locations";
+import { site } from "../../data/site";
+import { StarIcon } from "../common/Icons";
 
+// Tablero de arribos: cada punto de entrega es una fila.
 const HeroHome = () => {
+  const [pickupId, setPickupId] = useState(pickupPoints[0].id);
+  const current = pickupPoints.find((p) => p.id === pickupId);
+
   return (
-    <div className="page home-page">
-      <section className="hero">
-        <div className="hero-grid">
-          {/* Columna izquierda: texto principal */}
-          <div className="hero-main">
-            <p className="hero-eyebrow">TUCUMÁN & NORTE ARGENTINO</p>
-            <h1 className="hero-title">
-              Alquiler de vehículos{" "}
-              <span className="hero-highlight">sin letra chica.</span>
-              <br />
-              <span className="hero-highlight-alt">
-                Solo libertad y confianza.
-              </span>
-            </h1>
-            <p className="hero-subtitle">
-              Retirá tu auto en el aeropuerto, en la ciudad o en el hotel
-              Castillo de Piedra. Tarifas claras, asistencia 24/7 y flota
-              pensada para rutas de montaña.
-            </p>
+    <section className="board" aria-labelledby="board-title">
+      <div className="board-inner">
+        <div className="board-main">
+          <h1 id="board-title" className="board-title">
+            <SplitFlap text="Tu auto te espera en" className="board-title-top" />
+            <SplitFlap text={current.board} className="board-title-dest" />
+          </h1>
+          <p className="board-lede">
+            Alquiler de autos, SUVs, pick-ups y vans en Tucumán y el Norte
+            Argentino. Elegí dónde lo retirás y te lo dejamos listo.
+          </p>
 
-            <div className="hero-actions">
-              <Link to="/reservas" className="btn btn-primary btn-lg">
-                Reservar ahora
-              </Link>
-              <Link to="/flota" className="btn btn-outline btn-lg">
-                Ver flota completa
-              </Link>
+          <div className="board-table" role="group" aria-label="Puntos de entrega">
+            <div className="board-row board-row-head" aria-hidden="true">
+              <span>N°</span>
+              <span>Entrega</span>
+              <span>Estado</span>
             </div>
-
-            <div className="hero-badges-row">
-              <span className="hero-badge">Entrega en aeropuerto y hotel</span>
-              <span className="hero-badge">
-                Autos, SUVs, pick-ups y vans
-              </span>
-              <span className="hero-badge">
-                Opciones corporativas y turismo
-              </span>
-            </div>
-          </div>
-
-          {/* Columna derecha: métricas + clima + combo hotel */}
-          <div className="hero-side">
-            {/* Métricas */}
-            <div className="hero-card hero-card-metrics">
-              <p className="hero-card-title">Hoy en SINERGIA</p>
-              <div className="hero-metrics">
-                <div className="metric">
-                  <span className="metric-value">60+</span>
-                  <span className="metric-label">Unidades activas</span>
-                  <span className="metric-sub">
-                    Autos, SUVs y pick-ups listas
-                  </span>
-                </div>
-                <div className="metric">
-                  <span className="metric-value">98%</span>
-                  <span className="metric-label">Puntualidad</span>
-                  <span className="metric-sub">
-                    En entregas y devoluciones
-                  </span>
-                </div>
-                <div className="metric">
-                  <span className="metric-value">24/7</span>
-                  <span className="metric-label">Asistencia</span>
-                  <span className="metric-sub">WhatsApp y teléfono</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Fila horizontal: clima + combo */}
-            <div className="hero-side-row">
-              <div className="hero-card hero-card-weather">
-                <WeatherWidget
-                  city="San Miguel de Tucumán"
-                  countryCode="AR"
-                />
-              </div>
-
-              <div className="hero-card hero-card-castillo">
-                <p className="hero-card-title">
-                  Combo Auto + Castillo de Piedra
-                </p>
-                <p className="hero-card-text">
-                  Coordinamos entrega y devolución del vehículo directamente en
-                  el hotel <strong>Castillo de Piedra</strong> en Tafí del
-                  Valle.
-                </p>
-                <Link
-                  to="/hotel-castillo-de-piedra"
-                  className="btn btn-secondary btn-sm"
+            {pickupPoints.map((p, i) => {
+              const selected = p.id === pickupId;
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={`board-row${selected ? " is-selected" : ""}`}
+                  aria-pressed={selected}
+                  onClick={() => setPickupId(p.id)}
                 >
-                  Ver beneficios
-                </Link>
-              </div>
-            </div>
+                  <span className="row-n">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="row-place">
+                    {p.board}
+                    <span className="row-detail">{p.detail}</span>
+                  </span>
+                  <span className="row-status">{p.status}</span>
+                </button>
+              );
+            })}
           </div>
-        </div>
-      </section>
 
-      {/* De acá para abajo podés sumar más secciones de la home si querés */}
-    </div>
+          <a className="board-rating" href={site.mapsUrl} target="_blank" rel="noreferrer">
+            <span className="rating-value">
+              {site.rating.value}
+              <StarIcon className="rating-star" />
+            </span>
+            <span>
+              {site.rating.count} opiniones en Google
+              <span className="rating-when"> · {site.rating.checked}</span>
+            </span>
+          </a>
+        </div>
+
+        <QuoteTicket pickupId={pickupId} onPickupChange={setPickupId} />
+      </div>
+    </section>
   );
 };
 

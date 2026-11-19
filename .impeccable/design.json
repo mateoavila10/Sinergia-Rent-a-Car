@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T20:28:29.429Z",
+  "title": "Design System: Sinergia Rent a Car",
+  "extensions": {
+    "colorMeta": {
+      "board": {
+        "role": "primary",
+        "displayName": "Azul Tablero",
+        "canonical": "#161b45",
+        "tonalRamp": [
+          "#151728",
+          "#1b2155",
+          "#293280",
+          "#3744ae",
+          "#5965ca",
+          "#8b93da",
+          "#bdc2ea",
+          "#eeeff6"
+        ]
+      },
+      "board-deep": {
+        "role": "primary",
+        "displayName": "Azul Noche Profundo",
+        "canonical": "#0d1131",
+        "tonalRamp": [
+          "#141629",
+          "#181f59",
+          "#232e85",
+          "#303fb5",
+          "#5260d1",
+          "#8690df",
+          "#bac0ed",
+          "#eeeff7"
+        ]
+      },
+      "board-line": {
+        "role": "primary",
+        "displayName": "Línea de Tablero",
+        "canonical": "#2a3170",
+        "tonalRamp": [
+          "#161827",
+          "#1f2452",
+          "#2e367a",
+          "#3f49a7",
+          "#6069c3",
+          "#9097d5",
+          "#c0c4e7",
+          "#efeff6"
+        ]
+      },
+      "flap": {
+        "role": "primary",
+        "displayName": "Paleta",
+        "canonical": "#0b0f2b",
+        "tonalRamp": [
+          "#141629",
+          "#171f59",
+          "#222f86",
+          "#2f40b7",
+          "#5061d2",
+          "#8591e0",
+          "#bac0ed",
+          "#eeeff7"
+        ]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "Azul Logo",
+        "canonical": "#303673",
+        "tonalRamp": [
+          "#171826",
+          "#21254f",
+          "#323877",
+          "#444ca2",
+          "#646cbe",
+          "#9399d2",
+          "#c2c5e5",
+          "#eff0f5"
+        ]
+      },
+      "signal": {
+        "role": "secondary",
+        "displayName": "Naranja Encendido",
+        "canonical": "#ff7a2e",
+        "tonalRamp": [
+          "#311a0c",
+          "#702900",
+          "#a83d00",
+          "#e65300",
+          "#ff7324",
+          "#ff9e66",
+          "#ffc8a8",
+          "#faf0eb"
+        ]
+      },
+      "signal-hover": {
+        "role": "secondary",
+        "displayName": "Naranja Encendido (hover)",
+        "canonical": "#ff9152",
+        "tonalRamp": [
+          "#311a0c",
+          "#702900",
+          "#a83d00",
+          "#e65400",
+          "#ff7424",
+          "#ff9e66",
+          "#ffc8a8",
+          "#faf0eb"
+        ]
+      },
+      "orange": {
+        "role": "secondary",
+        "displayName": "Naranja Logo",
+        "canonical": "#c75726",
+        "tonalRamp": [
+          "#2b1a12",
+          "#5e2912",
+          "#8d3e1b",
+          "#c15425",
+          "#dc7447",
+          "#e69e7f",
+          "#f1c8b6",
+          "#f7f0ed"
+        ]
+      },
+      "orange-text": {
+        "role": "secondary",
+        "displayName": "Naranja Texto",
+        "canonical": "#a3401a",
+        "tonalRamp": [
+          "#2c1911",
+          "#61260f",
+          "#913917",
+          "#c64e20",
+          "#e16e42",
+          "#ea9a7b",
+          "#f3c6b4",
+          "#f8f0ed"
+        ]
+      },
+      "on-board": {
+        "role": "neutral",
+        "displayName": "Blanco Frío",
+        "canonical": "#eef1f6",
+        "tonalRamp": [
+          "#191d24",
+          "#273449",
+          "#3a4e6e",
+          "#4f6a96",
+          "#7089b3",
+          "#9badca",
+          "#c6d0e1",
+          "#f0f2f5"
+        ]
+      },
+      "on-board-dim": {
+        "role": "neutral",
+        "displayName": "Blanco Atenuado",
+        "canonical": "#a9b3d6",
+        "tonalRamp": [
+          "#181b25",
+          "#242d4c",
+          "#364472",
+          "#4a5c9b",
+          "#6a7cb8",
+          "#97a3ce",
+          "#c4cbe3",
+          "#f0f1f5"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#f3f4f8",
+        "tonalRamp": [
+          "#1a1c23",
+          "#292f47",
+          "#3e476a",
+          "#556191",
+          "#7480ae",
+          "#9ea6c7",
+          "#c8cddf",
+          "#f0f1f4"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Hoja",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#1f1f1f",
+          "#383838",
+          "#545454",
+          "#737373",
+          "#919191",
+          "#b3b3b3",
+          "#d4d4d4",
+          "#f2f2f2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#161b45",
+        "tonalRamp": [
+          "#151728",
+          "#1b2155",
+          "#293280",
+          "#3744ae",
+          "#5965ca",
+          "#8b93da",
+          "#bdc2ea",
+          "#eeeff6"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinta Suave",
+        "canonical": "#4a5182",
+        "tonalRamp": [
+          "#1a1b24",
+          "#292d48",
+          "#3d436b",
+          "#535b92",
+          "#737baf",
+          "#9ea3c7",
+          "#c8cbe0",
+          "#f0f1f4"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea",
+        "canonical": "#d6dae8",
+        "tonalRamp": [
+          "#191c24",
+          "#282f48",
+          "#3c476c",
+          "#526193",
+          "#7380b0",
+          "#9da7c8",
+          "#c7cde0",
+          "#f0f1f4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Títulos de página en el encabezado de tablero; titulares en paletas."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección y de banda, en mayúsculas."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombre de vehículo, títulos de tarjeta, título del talón."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Cifras, precios, puntaje y código de combo, con números tabulares."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Lectura: descripciones, reseñas, condiciones (52-62ch)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas de paso, botones, links de navegación, títulos del pie."
+      },
+      "column-head": {
+        "displayName": "Column Head",
+        "purpose": "Encabezados de columna de las tablas de tablero y flota."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ticket-on-board",
+        "value": "0 24px 48px rgba(5, 8, 30, 0.45)",
+        "purpose": "Talón de cotización apoyado sobre el tablero de portada."
+      },
+      {
+        "name": "ticket-on-paper",
+        "value": "0 1px 0 #d6dae8, 0 18px 40px rgba(22, 27, 69, 0.12)",
+        "purpose": "Talón completo en la página Reservar, sobre papel."
+      },
+      {
+        "name": "flap-hinge",
+        "value": "0 1px 0 rgba(255, 255, 255, 0.06)",
+        "purpose": "Brillo bajo la línea de bisagra de cada paleta split-flap."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-change",
+        "value": "0.15s ease",
+        "purpose": "Cambio de fondo en botones y filas de tablero."
+      },
+      {
+        "name": "press",
+        "value": "transform 0.08s ease, translateY(1px)",
+        "purpose": "Botón presionado."
+      },
+      {
+        "name": "menu-toggle",
+        "value": "0.2s ease",
+        "purpose": "Barras del botón de menú a cruz."
+      },
+      {
+        "name": "flap-spin",
+        "value": "260ms por paleta, 28ms de demora entre paletas, tick de 45ms",
+        "purpose": "Giro de paletas split-flap al cambiar el texto; desactivado con prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "clock",
+        "value": "1240px"
+      },
+      {
+        "name": "nav",
+        "value": "1080px"
+      },
+      {
+        "name": "stack",
+        "value": "960px"
+      },
+      {
+        "name": "mobile",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón Signal",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "Acción principal (cotizar) en cualquier superficie.",
+      "html": "<button class=\"ds-btn ds-btn-signal\">Cotizar por WhatsApp</button>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:8px 20px; border:2px solid transparent; border-radius:6px; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:19px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition: background-color .15s ease, transform .08s ease; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline:3px solid var(--focus-c); outline-offset:3px; } .ds-btn-signal { --focus-c: var(--navy, #303673); background: var(--signal, #ff7a2e); color: var(--board-deep, #0d1131); } .ds-btn-signal:hover { background: var(--signal-hover, #ff9152); }"
+    },
+    {
+      "name": "Botón Ink",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Acción secundaria sólida sobre papel.",
+      "html": "<button class=\"ds-btn ds-btn-ink\">Ver flota</button>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:8px 20px; border:2px solid transparent; border-radius:6px; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:19px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition: background-color .15s ease, transform .08s ease; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline:3px solid var(--focus-c); outline-offset:3px; } .ds-btn-ink { --focus-c: var(--navy, #303673); background: var(--navy, #303673); color: var(--on-board, #eef1f6); } .ds-btn-ink:hover { background: var(--board, #161b45); }"
+    },
+    {
+      "name": "Botón Ghost (tablero)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Acción secundaria sobre superficies oscuras.",
+      "html": "<div style=\"background:#161b45;padding:20px\"><button class=\"ds-btn ds-btn-ghost\">Ver el hotel</button></div>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:8px 20px; border:2px solid transparent; border-radius:6px; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:19px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition: background-color .15s ease, transform .08s ease; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline:3px solid var(--focus-c); outline-offset:3px; } .ds-btn-ghost { --focus-c: var(--signal, #ff7a2e); background: transparent; border-color: var(--on-board-dim, #a9b3d6); color: var(--on-board, #eef1f6); } .ds-btn-ghost:hover { border-color: var(--on-board, #eef1f6); }"
+    },
+    {
+      "name": "Botón Ghost Ink",
+      "kind": "button",
+      "refersTo": "button-ghost-ink",
+      "description": "Acción secundaria con borde sobre papel.",
+      "html": "<button class=\"ds-btn ds-btn-ghost-ink\">Volver al inicio</button>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:8px 20px; border:2px solid transparent; border-radius:6px; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:19px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition: background-color .15s ease, transform .08s ease; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline:3px solid var(--focus-c); outline-offset:3px; } .ds-btn-ghost-ink { --focus-c: var(--navy, #303673); background: transparent; border-color: var(--navy, #303673); color: var(--navy, #303673); } .ds-btn-ghost-ink:hover { background: var(--navy, #303673); color: var(--on-board, #eef1f6); }"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulario sobre hoja clara.",
+      "html": "<label class=\"ds-label\" for=\"ds-f\">Retiro</label><select id=\"ds-f\" class=\"ds-input\"><option>Aeropuerto</option></select>",
+      "css": ".ds-label { display:block; margin-bottom:6px; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:16px; font-weight:750; letter-spacing:0.1em; text-transform:uppercase; color: var(--ink-soft, #4a5182); } .ds-input { width:100%; min-height:48px; padding:10px 12px; border:2px solid var(--line, #d6dae8); border-radius:8px; background: var(--sheet, #fff); color: var(--ink, #161b45); font-family: var(--font-text, \"Public Sans Variable\", system-ui, sans-serif); font-size:16px; } .ds-input:focus-visible { outline:3px solid var(--navy, #303673); outline-offset:1px; border-color: var(--navy, #303673); }"
+    },
+    {
+      "name": "Barra de navegación",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Barra pegajosa de tablero con links, reloj local y cotizar.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link is-active\" href=\"#\">Inicio</a><a class=\"ds-nav-link\" href=\"#\">Flota</a><a class=\"ds-nav-link\" href=\"#\">Reservar</a><span class=\"ds-clock\">TUC <b>14:05</b> · <em>Abierto 24 h</em></span></nav>",
+      "css": ".ds-nav { display:flex; align-items:center; gap:4px; padding:10px 24px; background: var(--board-deep, #0d1131); border-bottom:1px solid var(--board-line, #2a3170); } .ds-nav-link { position:relative; padding:10px; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:18px; font-weight:650; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; color: var(--on-board-dim, #a9b3d6); } .ds-nav-link:hover, .ds-nav-link.is-active { color: var(--on-board, #eef1f6); } .ds-nav-link.is-active::after { content:\"\"; position:absolute; left:10px; right:10px; bottom:2px; height:2px; background: var(--signal, #ff7a2e); } .ds-nav-link:focus-visible { outline:3px solid var(--signal, #ff7a2e); outline-offset:3px; } .ds-clock { margin-left:auto; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:18px; font-weight:650; letter-spacing:0.08em; text-transform:uppercase; font-variant-numeric: tabular-nums; color: var(--on-board-dim, #a9b3d6); } .ds-clock b { font-weight:inherit; color: var(--on-board, #eef1f6); } .ds-clock em { font-style:normal; color: var(--signal, #ff7a2e); }"
+    },
+    {
+      "name": "Paletas split-flap",
+      "kind": "custom",
+      "refersTo": "flap-tile",
+      "description": "Firma tipográfica: letras en fichas de tablero con bisagra.",
+      "html": "<div style=\"background:#161b45;padding:20px\"><span class=\"ds-flap\"><span class=\"ds-flap-word\"><span class=\"ds-tile\">T</span><span class=\"ds-tile\">U</span></span><span class=\"ds-flap-word\"><span class=\"ds-tile\">A</span><span class=\"ds-tile\">U</span><span class=\"ds-tile\">T</span><span class=\"ds-tile\">O</span></span></span></div>",
+      "css": ".ds-flap { display:flex; flex-wrap:wrap; gap:0.12em 0.3em; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:42px; font-weight:800; line-height:1; color: var(--on-board, #eef1f6); } .ds-flap-word { display:inline-flex; gap:0.06em; } .ds-tile { position:relative; display:inline-flex; align-items:center; justify-content:center; width:0.74em; height:1.14em; background: var(--flap, #0b0f2b); border-radius:0.07em; font-variant-numeric: tabular-nums; } .ds-tile::after { content:\"\"; position:absolute; inset:50% 0 auto; height:1px; background: rgba(0,0,0,0.7); box-shadow: 0 1px 0 rgba(255,255,255,0.06); }"
+    },
+    {
+      "name": "Fila de tablero",
+      "kind": "custom",
+      "refersTo": "board-row",
+      "description": "Punto de entrega como fila seleccionable con número, lugar y estado.",
+      "html": "<div style=\"background:#161b45;padding:12px\"><button class=\"ds-row is-selected\"><span class=\"ds-row-n\">01</span><span class=\"ds-row-place\">Aeropuerto<small>Teniente Benjamín Matienzo</small></span><span class=\"ds-row-status\">Listo</span></button><button class=\"ds-row\"><span class=\"ds-row-n\">02</span><span class=\"ds-row-place\">Centro<small>San Miguel de Tucumán</small></span><span class=\"ds-row-status\">24 h</span></button></div>",
+      "css": ".ds-row { display:grid; grid-template-columns:52px minmax(0,1fr) auto; gap:16px; align-items:center; width:100%; min-height:68px; padding:10px 12px; border:0; border-bottom:1px solid var(--board-line, #2a3170); background:transparent; color: var(--on-board, #eef1f6); font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:26px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; text-align:left; cursor:pointer; transition: background-color .15s ease; } .ds-row:hover { background: rgba(255,255,255,0.04); } .ds-row.is-selected { background: var(--board-deep, #0d1131); } .ds-row:focus-visible { outline:3px solid var(--signal, #ff7a2e); outline-offset:3px; } .ds-row-n { color: var(--on-board-dim, #a9b3d6); font-variant-numeric: tabular-nums; } .ds-row.is-selected .ds-row-n { color: var(--signal, #ff7a2e); } .ds-row-place { display:flex; flex-direction:column; } .ds-row-place small { font-family: var(--font-text, \"Public Sans Variable\", system-ui, sans-serif); font-size:15px; font-weight:400; letter-spacing:0; text-transform:none; color: var(--on-board-dim, #a9b3d6); } .ds-row-status { color: var(--signal, #ff7a2e); font-size:22px; text-align:right; }"
+    },
+    {
+      "name": "Talón de cotización",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Hoja de embarque clara con pasos numerados al margen, perforado y troqueles.",
+      "html": "<div style=\"background:#161b45;padding:24px\"><div class=\"ds-ticket\"><div class=\"ds-ticket-head\"><h3>Pedí tu cotización</h3></div><ol class=\"ds-steps\"><li><span class=\"ds-step-n\">1</span><span class=\"ds-step-label\">Retiro</span></li><li><span class=\"ds-step-n\">2</span><span class=\"ds-step-label\">Fechas</span></li><li><span class=\"ds-step-n\">3</span><span class=\"ds-step-label\">Categoría</span></li></ol><div class=\"ds-stub\"><button class=\"ds-stub-btn\">Cotizar por WhatsApp</button></div></div></div>",
+      "css": ".ds-ticket { position:relative; max-width:400px; background: var(--sheet, #fff); color: var(--ink, #161b45); border-radius:14px; box-shadow: 0 24px 48px rgba(5,8,30,0.45); } .ds-ticket-head { padding:26px 28px 6px; } .ds-ticket-head h3 { margin:0; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:34px; font-weight:800; line-height:1; text-transform:uppercase; color: var(--navy, #303673); } .ds-steps { list-style:none; margin:0; padding:16px 28px 22px; display:grid; gap:16px; } .ds-steps li { display:flex; align-items:center; gap:12px; } .ds-step-n { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: var(--navy, #303673); color: var(--on-board, #eef1f6); font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:18px; font-weight:800; } .ds-step-label { font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:16px; font-weight:750; letter-spacing:0.1em; text-transform:uppercase; color: var(--ink-soft, #4a5182); } .ds-stub { position:relative; padding:22px 28px 24px; border-top:2px dashed var(--line, #d6dae8); } .ds-stub::before, .ds-stub::after { content:\"\"; position:absolute; top:-13px; width:24px; height:24px; border-radius:50%; background: var(--board, #161b45); } .ds-stub::before { left:-12px; } .ds-stub::after { right:-12px; } .ds-stub-btn { width:100%; min-height:56px; border:0; border-radius:6px; background: var(--signal, #ff7a2e); color: var(--board-deep, #0d1131); font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:21px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; } .ds-stub-btn:hover { background: var(--signal-hover, #ff9152); } .ds-stub-btn:focus-visible { outline:3px solid var(--navy, #303673); outline-offset:3px; }"
+    },
+    {
+      "name": "Cifra impresa",
+      "kind": "custom",
+      "refersTo": "figure",
+      "description": "Fila de cifra sobre tablero profundo: etiqueta condensada y número en naranja encendido.",
+      "html": "<div class=\"ds-stats\"><div class=\"ds-stat\"><span class=\"ds-stat-label\">Puntualidad<small>En entregas y devoluciones</small></span><span class=\"ds-stat-value\">98%</span></div></div>",
+      "css": ".ds-stats { background: var(--board-deep, #0d1131); padding:8px 24px; } .ds-stat { display:flex; align-items:baseline; gap:16px; padding:16px 0; border-bottom:1px dotted var(--board-line, #2a3170); } .ds-stat-label { flex:1; display:flex; flex-direction:column; font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:22px; font-weight:750; letter-spacing:0.06em; text-transform:uppercase; color: var(--on-board, #eef1f6); } .ds-stat-label small { font-family: var(--font-text, \"Public Sans Variable\", system-ui, sans-serif); font-size:15px; font-weight:400; letter-spacing:0; text-transform:none; color: var(--on-board-dim, #a9b3d6); } .ds-stat-value { font-family: var(--font-board, \"Big Shoulders Display Variable\", \"Arial Narrow\", sans-serif); font-size:52px; font-weight:800; line-height:1; font-variant-numeric: tabular-nums; color: var(--signal, #ff7a2e); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El tablero de arribos",
+    "overview": "Sinergia se lee como el tablero de arribos de una terminal tucumana. Las superficies dominantes son el azul marino del logo, oscurecido hasta volverse tablero; sobre él, lo que es \"estado\" (destinos, horarios, cifras, precios, acciones) aparece en tipografía condensada de tablero, en blanco frío o en el naranja del logo encendido. Todo lo que se lee con calma (descripciones, reseñas, condiciones) vuelve a una sans pública y legible, sobre papel claro.\n\nLa densidad es la de una terminal: filas separadas por líneas finas, columnas con encabezados chicos y espaciados, cifras con números tabulares. No hay tarjetas iguales en grilla ni foto de ruta con buscador encima; la información se presenta como filas que se pueden recorrer con la vista. El formulario de cotización es la única pieza \"de papel\" sobre el tablero: un talón de embarque claro, con troquel y numeración al margen.\n\nEl sistema trabaja con dos tintas (azul marino y naranja) más el fondo. El movimiento existe en un solo lugar con sentido: las paletas split-flap giran cuando cambia el texto que muestran, y se quedan quietas si el usuario pidió menos movimiento.",
+    "keyCharacteristics": [
+      "Tablero azul marino como superficie dominante; papel claro para leer.",
+      "Tipografía condensada de tablero para estados, títulos, etiquetas y botones; sans legible para lectura.",
+      "Filas impresas con líneas finas en vez de tarjetas.",
+      "Naranja reservado a estados, cifras y la acción principal.",
+      "Talón de cotización claro con troquel, perforado y pasos numerados al margen.",
+      "Paletas split-flap con bisagra como firma tipográfica."
+    ],
+    "rules": [
+      {
+        "name": "La Regla de las Dos Tintas",
+        "body": "Azul marino y naranja más el fondo, nada más. No se agrega un tercer color de marca ni acentos decorativos; los únicos colores fuera de la paleta son los funcionales de éxito y error del formulario.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla de la Luz Encendida",
+        "body": "Sobre tablero, el naranja es `signal`; sobre papel, el naranja es `orange-text` (texto) u `orange` (gráfico). El naranja del logo crudo nunca se usa como texto chico.",
+        "section": "colors"
+      },
+      {
+        "name": "La Regla del Estado Condensado",
+        "body": "Si es un estado, una cifra, un destino, una acción o una etiqueta, va en Big Shoulders en mayúsculas. Si es una oración, va en Public Sans en caja normal. Las filas mezclan ambas: nombre condensado arriba, detalle en sans abajo.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla del Número Tabular",
+        "body": "Toda cifra que pueda cambiar o alinearse (horas, precios, cifras, numeración de filas, paletas) lleva números tabulares.",
+        "section": "typography"
+      },
+      {
+        "name": "La Regla del Único Papel",
+        "body": "Solo el talón proyecta sombra. Tarjetas, filas, combo y franjas son planos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** usar `board` o `board-deep` para toda franja que muestre estados, cifras o destinos, y `paper` para lo que se lee.",
+      "**Do** escribir estados, cifras, etiquetas, botones y títulos en Big Shoulders mayúscula, y párrafos en Public Sans.",
+      "**Do** presentar listas comparables (puntos de entrega, flota, cifras) como filas separadas por líneas de 1px, con encabezado de columna de 12px.",
+      "**Do** cambiar el color de foco a `signal` dentro de toda superficie oscura (barra, tablero, cifras, combo, encabezado, banda, pie) y dejarlo en `navy` sobre claro y dentro del talón.",
+      "**Do** mantener 44px de alto mínimo en todo objetivo táctil (48px en campos, 52px en el menú móvil).",
+      "**Do** respetar movimiento reducido: paletas sin giro, sin transiciones en botones, filas y menú, y sin el desplazamiento al presionar.",
+      "**Do** usar `orange-text` para cualquier texto naranja sobre papel."
+    ],
+    "donts": [
+      "**Don't** agregar un tercer color de marca, degradados o acentos decorativos fuera de las dos tintas.",
+      "**Don't** usar la foto de ruta con buscador encima como portada, ni grillas de tarjetas iguales para flota o puntos de entrega.",
+      "**Don't** poner sombra a nada que no sea el talón.",
+      "**Don't** usar el naranja del logo crudo (`orange`) como texto chico ni `signal` sobre papel.",
+      "**Don't** componer párrafos en Big Shoulders ni estados en Public Sans.",
+      "**Don't** usar las paletas split-flap para texto largo: solo titulares y líneas destino cortas."
+    ]
+  }
+}

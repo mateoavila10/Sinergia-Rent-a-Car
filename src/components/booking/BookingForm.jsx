@@ -1,282 +1,170 @@
-import React, { useId, useState } from "react";
+import { useId, useState } from "react";
 import { locations } from "../../data/locations";
+import { whatsappUrl } from "../../data/site";
 
-const BookingForm = ({ compact = false, defaultIncludeHotel = false }) => {
-  const uid = useId();
-  const BUSINESS_WHATSAPP =
-    import.meta.env.VITE_BUSINESS_WHATSAPP || "5493814571012";
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const categories = ["Cualquiera", "Económico", "Compacto", "SUV", "Pick-Up", "Van"];
 
-  function getInitialForm() {
-    return {
-      fullName: "",
-      email: "",
-      phone: "",
-      vehicleCategory: "Cualquiera",
-      pickupLocation: locations[0],
-      returnLocation: locations[0],
-      pickupDate: "",
-      returnDate: "",
-      driverAge: "",
-      notes: "",
-      includeHotel: defaultIncludeHotel, // combo auto + hotel
-    };
-  }
+function getInitialForm(defaultIncludeHotel, defaultCategory) {
+  return {
+    fullName: "",
+    email: "",
+    phone: "",
+    vehicleCategory: categories.includes(defaultCategory) ? defaultCategory : "Cualquiera",
+    pickupLocation: locations[0],
+    returnLocation: locations[0],
+    pickupDate: "",
+    returnDate: "",
+    driverAge: "",
+    notes: "",
+    includeHotel: defaultIncludeHotel,
+  };
+}
 
-  const [form, setForm] = useState(getInitialForm);
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+function buildWhatsAppText(d) {
+  return `
+Hola, soy ${d.fullName}.
 
-  function handleChange(e) {
-    const { name, value, type, checked } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  }
+Quiero una cotización en Sinergia Rent a Car:
 
-  function buildWhatsAppText(data) {
-    return `
-Hola, soy ${data.fullName}.
-
-Quiero una cotización en SINERGIA RENT A CAR:
-
-- Retiro: ${data.pickupLocation} (${data.pickupDate || "-"})
-- Devolución: ${data.returnLocation} (${data.returnDate || "-"})
-- Edad del conductor: ${data.driverAge || "-"}
-- Categoría de vehículo: ${data.vehicleCategory}
-- Teléfono de contacto: ${data.phone}
-- Email: ${data.email}
-- Combo Auto + Hotel Castillo de Piedra: ${
-      data.includeHotel ? "SÍ, incluir alojamiento" : "No, solo vehículo"
-    }
-- Comentarios: ${data.notes || "-"}
+- Retiro: ${d.pickupLocation} (${d.pickupDate || "-"})
+- Devolución: ${d.returnLocation} (${d.returnDate || "-"})
+- Edad del conductor: ${d.driverAge || "-"}
+- Categoría de vehículo: ${d.vehicleCategory}
+- Teléfono: ${d.phone}
+- Email: ${d.email}
+- Combo Auto + Hotel Castillo de Piedra: ${d.includeHotel ? "Sí" : "No"}
+- Comentarios: ${d.notes || "-"}
 
 ¡Gracias!
 `.trim();
+}
+
+// El pedido completo como talón de embarque: cuatro pasos numerados y troquel antes del botón.
+const BookingForm = ({ defaultIncludeHotel = false, defaultCategory = "" }) => {
+  const uid = useId();
+  const [form, setForm] = useState(() => getInitialForm(defaultIncludeHotel, defaultCategory));
+  const [sent, setSent] = useState(false);
+  const id = (name) => `${uid}-${name}`;
+
+  function handleChange(e) {
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setMessage("");
-    setLoading(true);
-
-    try {
-      // 1) Guardar / notificar en backend (si está disponible)
-      try {
-        await fetch(`${API_URL}/api/reservations`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-      } catch (err) {
-        console.warn(
-          "No se pudo contactar al backend, pero seguimos con WhatsApp:",
-          err
-        );
-      }
-
-      // 2) Abrir WhatsApp del negocio con el detalle
-      const text = buildWhatsAppText(form);
-      const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(
-        text
-      )}`;
-
-      window.open(waUrl, "_blank");
-
-      setMessage(
-        "Te abrimos WhatsApp con tu solicitud de cotización. Un asesor de Sinergia te va a responder a la brevedad."
-      );
-      setForm(getInitialForm());
-    } catch (err) {
-      console.error(err);
-      setMessage("Hubo un error al enviar la solicitud. Probá nuevamente.");
-    } finally {
-      setLoading(false);
-    }
+    window.open(whatsappUrl(buildWhatsAppText(form)), "_blank", "noopener");
+    setSent(true);
   }
 
   return (
-    <div
-      className={`card booking-card ${compact ? "booking-card-compact" : ""}`}
-    >
-      <h3>Reserva rápida</h3>
-      <form className="booking-form" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor={`${uid}-fullName`}>Nombre y apellido</label>
-            <input
-              id={`${uid}-fullName`}
-              name="fullName"
-              value={form.fullName}
-              onChange={handleChange}
-              required
-              placeholder="Ej: Juan Pérez"
-            />
-          </div>
-        </div>
+    <form className="ticket ticket-page" onSubmit={handleSubmit} aria-labelledby={id("title")}>
+      <div className="ticket-head">
+        <h2 id={id("title")} className="ticket-title">Tu pedido</h2>
+        <p className="ticket-sub">Cuatro pasos y te respondemos por WhatsApp.</p>
+      </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor={`${uid}-email`}>Email</label>
-            <input
-              id={`${uid}-email`}
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              placeholder="tu@correo.com"
-            />
+      <ol className="ticket-steps">
+        <li className="ticket-step">
+          <span className="step-n" aria-hidden="true">1</span>
+          <h3 className="step-label">Retiro y devolución</h3>
+          <div className="step-fields">
+            <div className="form-group">
+              <label htmlFor={id("pickupLocation")}>Retiro</label>
+              <select id={id("pickupLocation")} name="pickupLocation" value={form.pickupLocation} onChange={handleChange}>
+                {locations.map((loc) => (
+                  <option key={loc}>{loc}</option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor={id("returnLocation")}>Devolución</label>
+              <select id={id("returnLocation")} name="returnLocation" value={form.returnLocation} onChange={handleChange}>
+                {locations.map((loc) => (
+                  <option key={loc}>{loc}</option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor={`${uid}-phone`}>Teléfono / WhatsApp</label>
-            <input
-              id={`${uid}-phone`}
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              required
-              placeholder="Ej: +54 9 381 ..."
-            />
-          </div>
-        </div>
+        </li>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor={`${uid}-vehicleCategory`}>Categoría de vehículo</label>
-            <select
-              id={`${uid}-vehicleCategory`}
-              name="vehicleCategory"
-              value={form.vehicleCategory}
-              onChange={handleChange}
-            >
-              <option value="Cualquiera">Cualquiera</option>
-              <option value="Económico">Económico</option>
-              <option value="Compacto">Compacto</option>
-              <option value="SUV">SUV</option>
-              <option value="Pick-Up">Pick-Up</option>
-              <option value="Van">Van</option>
-            </select>
+        <li className="ticket-step">
+          <span className="step-n" aria-hidden="true">2</span>
+          <h3 className="step-label">Fechas</h3>
+          <div className="step-fields step-fields-2">
+            <div className="form-group">
+              <label htmlFor={id("pickupDate")}>Retiro</label>
+              <input id={id("pickupDate")} type="datetime-local" name="pickupDate" value={form.pickupDate} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+              <label htmlFor={id("returnDate")}>Devolución</label>
+              <input id={id("returnDate")} type="datetime-local" name="returnDate" value={form.returnDate} min={form.pickupDate || undefined} onChange={handleChange} required />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor={`${uid}-driverAge`}>Edad del conductor</label>
-            <input
-              id={`${uid}-driverAge`}
-              type="number"
-              min="18"
-              name="driverAge"
-              value={form.driverAge}
-              onChange={handleChange}
-              placeholder="Ej: 30"
-              required
-            />
-          </div>
-        </div>
+        </li>
 
-        {/* Retiro y Devolución en columna para evitar que se salga de la card */}
-<div className="form-row form-row-locations">
-  <div className="form-group">
-    <label htmlFor={`${uid}-pickupLocation`}>Retiro</label>
-    <select
-      id={`${uid}-pickupLocation`}
-      name="pickupLocation"
-      value={form.pickupLocation}
-      onChange={handleChange}
-    >
-      {locations.map((loc) => (
-        <option key={loc} value={loc}>
-          {loc}
-        </option>
-      ))}
-    </select>
-  </div>
-  <div className="form-group">
-    <label htmlFor={`${uid}-returnLocation`}>Devolución</label>
-    <select
-      id={`${uid}-returnLocation`}
-      name="returnLocation"
-      value={form.returnLocation}
-      onChange={handleChange}
-    >
-      {locations.map((loc) => (
-        <option key={loc} value={loc}>
-          {loc}
-        </option>
-      ))}
-    </select>
-  </div>
-</div>
-
-
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor={`${uid}-pickupDate`}>Fecha y hora de retiro</label>
-            <input
-              id={`${uid}-pickupDate`}
-              type="datetime-local"
-              name="pickupDate"
-              value={form.pickupDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor={`${uid}-returnDate`}>Fecha y hora de devolución</label>
-            <input
-              id={`${uid}-returnDate`}
-              type="datetime-local"
-              name="returnDate"
-              value={form.returnDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        </div>
-
-        {/* Checkbox combo Auto + Hotel */}
-        <div className="form-row">
-          <div className="form-group form-group-checkbox">
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="includeHotel"
-                checked={form.includeHotel}
-                onChange={handleChange}
-              />
+        <li className="ticket-step">
+          <span className="step-n" aria-hidden="true">3</span>
+          <h3 className="step-label">Vehículo</h3>
+          <div className="step-fields step-fields-2">
+            <div className="form-group">
+              <label htmlFor={id("vehicleCategory")}>Categoría</label>
+              <select id={id("vehicleCategory")} name="vehicleCategory" value={form.vehicleCategory} onChange={handleChange}>
+                {categories.map((c) => (
+                  <option key={c}>{c}</option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor={id("driverAge")}>Edad del conductor</label>
+              <input id={id("driverAge")} type="number" min="18" name="driverAge" value={form.driverAge} onChange={handleChange} required placeholder="Ej: 30" />
+            </div>
+            <label className="checkbox-label step-wide">
+              <input type="checkbox" name="includeHotel" checked={form.includeHotel} onChange={handleChange} />
               <span>
-                Quiero incluir alojamiento en{" "}
-                <strong>Castillo de Piedra</strong>
+                Sumar alojamiento en <strong>Castillo de Piedra</strong> (combo Auto + Hotel)
               </span>
             </label>
           </div>
-        </div>
+        </li>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor={`${uid}-notes`}>Comentarios adicionales</label>
-            <textarea
-              id={`${uid}-notes`}
-              name="notes"
-              rows="3"
-              value={form.notes}
-              onChange={handleChange}
-              placeholder="Ej: Sillita para bebé, viaje en familia, etc."
-            />
+        <li className="ticket-step">
+          <span className="step-n" aria-hidden="true">4</span>
+          <h3 className="step-label">Tus datos</h3>
+          <div className="step-fields step-fields-2">
+            <div className="form-group step-wide">
+              <label htmlFor={id("fullName")}>Nombre y apellido</label>
+              <input id={id("fullName")} name="fullName" value={form.fullName} onChange={handleChange} required autoComplete="name" placeholder="Ej: Juan Pérez" />
+            </div>
+            <div className="form-group">
+              <label htmlFor={id("email")}>Email</label>
+              <input id={id("email")} name="email" type="email" value={form.email} onChange={handleChange} required autoComplete="email" placeholder="tu@correo.com" />
+            </div>
+            <div className="form-group">
+              <label htmlFor={id("phone")}>Teléfono / WhatsApp</label>
+              <input id={id("phone")} name="phone" type="tel" value={form.phone} onChange={handleChange} required autoComplete="tel" placeholder="Ej: +54 9 381 ..." />
+            </div>
+            <div className="form-group step-wide">
+              <label htmlFor={id("notes")}>Comentarios</label>
+              <textarea id={id("notes")} name="notes" rows="3" value={form.notes} onChange={handleChange} placeholder="Ej: sillita para bebé, número de vuelo, etc." />
+            </div>
           </div>
-        </div>
+        </li>
+      </ol>
 
-        <button
-          type="submit"
-          className="btn btn-primary btn-full"
-          disabled={loading}
-        >
-          {loading ? "Enviando..." : "Solicitar cotización por WhatsApp"}
+      <div className="ticket-stub">
+        <button type="submit" className="btn btn-signal btn-block btn-lg">
+          Pedir cotización por WhatsApp
         </button>
-
-        {message && <p className="form-success">{message}</p>}
-      </form>
-    </div>
+        {sent ? (
+          <p className="form-success" role="status">
+            Te abrimos WhatsApp con tu pedido. Solo tenés que enviarlo y te respondemos.
+          </p>
+        ) : (
+          <p className="ticket-note">Se abre WhatsApp con tu pedido listo para enviar.</p>
+        )}
+      </div>
+    </form>
   );
 };
 

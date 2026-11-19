@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const AboutPage = () => {
   return (
@@ -12,9 +12,9 @@ const AboutPage = () => {
       </header>
 
       {/* Bloque principal: historia + cómo trabajamos */}
-      <div className="page-two-columns" style={{ marginTop: 20 }}>
-        <div className="card">
-          <h3>Quiénes somos</h3>
+      <div className="page-two-columns">
+        <section className="card">
+          <h2>Quiénes somos</h2>
           <p>
             Sinergia Rent a Car nace en San Miguel de Tucumán como un{" "}
             <strong>nuevo concepto profesional</strong> en el rubro de alquiler
@@ -26,20 +26,15 @@ const AboutPage = () => {
           <p>
             Desde nuestros inicios fuimos incorporando flota y puntos de
             entrega, acompañando el crecimiento turístico de la región y las
-            necesidades de las empresas locales. Hoy somos una de las{" "}
-            <strong>opciones de referencia en Tucumán y el NOA</strong> para
-            quienes buscan movilidad confiable, tanto en viajes de ocio como de
-            trabajo.
+            necesidades de las empresas locales. Hoy tenemos <strong>4,8 estrellas con más de 230 opiniones en Google</strong> de quienes nos eligen para viajes de ocio y de trabajo.
           </p>
           <p>
-            Operamos todos los días en una franja horaria amplia, de{" "}
-            <strong>07:30 a 23:30</strong>, para adaptarnos a horarios de
-            vuelos, micros y traslados internos. Nuestro equipo combina
+            Atendemos <strong>las 24 horas, todos los días</strong>, para adaptarnos a horarios de vuelos, micros y traslados internos. Nuestro equipo combina
             experiencia en turismo, logística y atención al cliente para ofrecer
             un servicio ágil, cercano y resolutivo.
           </p>
 
-          <h3 style={{ marginTop: 20 }}>Cómo trabajamos</h3>
+          <h2>Cómo trabajamos</h2>
           <ul>
             <li>
               <strong>Transparencia total:</strong> condiciones claras desde el
@@ -51,7 +46,7 @@ const AboutPage = () => {
               Hotel Castillo de Piedra y otros puntos de la región.
             </li>
             <li>
-              <strong>Asistencia 24/7:</strong> acompañamiento permanente por
+              <strong>Asistencia 24 horas:</strong> acompañamiento permanente por
               WhatsApp y teléfono durante todo el alquiler.
             </li>
             <li>
@@ -65,10 +60,10 @@ const AboutPage = () => {
               personalizada.
             </li>
           </ul>
-        </div>
+        </section>
 
-        <div className="card">
-          <h3>Servicios que ofrecemos</h3>
+        <section className="card">
+          <h2>Servicios que ofrecemos</h2>
           <ul>
             <li>
               <strong>Alquiler diario y por tramo:</strong> ideal para escapadas
@@ -100,7 +95,7 @@ const AboutPage = () => {
             </li>
           </ul>
 
-          <h3 style={{ marginTop: 20 }}>Nuestra filosofía</h3>
+          <h2>Nuestra filosofía</h2>
           <p>
             Sabemos que cuando alquilás un auto, nos confiás algo más que un
             vehículo: nos confiás tu viaje, tus horarios y a tu familia o tu
@@ -114,13 +109,13 @@ const AboutPage = () => {
             <strong>tiempo, comodidad y libertad</strong>: el auto listo, en el
             lugar y momento acordados, para que solo quede disfrutar el camino.
           </p>
-        </div>
+        </section>
       </div>
 
       {/* Bloque extra: cobertura y enfoque regional */}
       <section className="section">
-        <div className="card">
-          <h3>Cobertura en Tucumán y el Norte Argentino</h3>
+        <section className="card">
+          <h2>Cobertura en Tucumán y el Norte Argentino</h2>
           <p>
             Nuestra base operativa está en{" "}
             <strong>San Miguel de Tucumán</strong>, con operación habitual en el{" "}
@@ -136,7 +131,7 @@ const AboutPage = () => {
             tiempos de retiro/devolución para que tu experiencia sea lo más
             fluida posible.
           </p>
-        </div>
+        </section>
       </section>
     </div>
   );

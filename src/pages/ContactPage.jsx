@@ -1,33 +1,43 @@
-import React from "react";
 import ContactForm from "../components/contact/ContactForm";
+import { site, whatsappUrl } from "../data/site";
 
 const ContactPage = () => {
   return (
-    <div className="page" id="contacto">
+    <div className="page">
       <header className="page-header">
         <h1>Contacto</h1>
-        <p>Estamos listos para ayudarte a planificar tu próximo viaje.</p>
+        <p>Estamos para ayudarte a planificar tu viaje. {site.hours}.</p>
       </header>
 
       <div className="page-two-columns">
-        <div className="card">
-          <h3>Escribinos</h3>
+        <section className="card" aria-labelledby="write-title">
+          <h2 id="write-title">Escribinos</h2>
           <ContactForm />
-        </div>
-        <div className="card">
-          <h3>Datos de contacto</h3>
-          <p>Tel: +54 9 381 457 1012</p>
-          <p>Email: info@sinergiarentacar.com.ar</p>
-          <p>Central: San Miguel de Tucumán, Argentina</p>
-          <a
-            href="https://wa.me/5493814571012"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary btn-full"
-          >
+        </section>
+        <section className="card" aria-labelledby="data-title">
+          <h2 id="data-title">Datos de contacto</h2>
+          <ul className="contact-list">
+            <li>
+              <span className="k">WhatsApp y teléfono</span>
+              <a href={site.phoneHref}>{site.phoneDisplay}</a>
+            </li>
+            <li>
+              <span className="k">Email</span>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </li>
+            <li>
+              <span className="k">Sede</span>
+              <a href={site.mapsUrl} target="_blank" rel="noreferrer">{site.address}</a>
+            </li>
+            <li>
+              <span className="k">Horario</span>
+              <span>{site.hours}</span>
+            </li>
+          </ul>
+          <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="btn btn-signal btn-block btn-lg">
             Chatear por WhatsApp
           </a>
-        </div>
+        </section>
       </div>
     </div>
   );
