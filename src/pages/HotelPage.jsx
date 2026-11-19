@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { hotelImages } from "../data/hotelImages";
-import Photo from "../components/common/Photo";
 
 const HotelPage = () => {
-  const [failedPhotos, setFailedPhotos] = useState(() => new Set());
-
   return (
     <div className="page">
       <header className="page-header">
@@ -16,39 +12,6 @@ const HotelPage = () => {
           abiertas, aire puro y una arquitectura de castillo muy marcada.
         </p>
       </header>
-
-      {/* Galería de imágenes */}
-      <section className="section">
-        <div className="section-header">
-          <div>
-            <h2>Un castillo entre montañas</h2>
-            <p>
-              El edificio de piedra y sus galerías se integran con el paisaje:
-              jardines amplios, patio interno y una piscina con vista a los
-              cerros.
-            </p>
-          </div>
-        </div>
-
-        {/* Las fotos viven en public/fotos/hotel/; las que falten no se muestran */}
-        {failedPhotos.size < hotelImages.length && (
-          <div className="hotel-gallery">
-            {hotelImages
-              .filter((img) => !failedPhotos.has(img.id))
-              .map((img) => (
-                <figure key={img.id} className="hotel-gallery-item">
-                  <Photo
-                    src={img.src}
-                    alt={img.alt}
-                    onFail={() =>
-                      setFailedPhotos((prev) => new Set(prev).add(img.id))
-                    }
-                  />
-                </figure>
-              ))}
-          </div>
-        )}
-      </section>
 
       {/* Info + beneficios combo */}
       <div className="page-two-columns" style={{ marginTop: 28 }}>

@@ -35,7 +35,7 @@ Incluye:
 
 ## Fotos
 
-Las fotos se guardan en el proyecto (no se enlazan desde otros sitios). Mientras falte una, la flota muestra "Foto próximamente" y la galería del hotel la oculta.
+Las fotos se guardan en el proyecto (no se enlazan desde otros sitios). Mientras falte una, la flota muestra "Foto próximamente".
 
 | Archivo | Qué va |
 |---|---|
@@ -44,9 +44,5 @@ Las fotos se guardan en el proyecto (no se enlazan desde otros sitios). Mientras
 | `public/fotos/flota/suv.jpg` | SUV |
 | `public/fotos/flota/pickup.jpg` | Pick-up 4x4 |
 | `public/fotos/flota/van.jpg` | Van 7 pasajeros |
-| `public/fotos/hotel/patio.jpg` | Patio interno de Castillo de Piedra |
-| `public/fotos/hotel/piscina.jpg` | Castillo y piscina |
-| `public/fotos/hotel/interior.jpg` | Espacio interior |
-| `public/fotos/hotel/asador.jpg` | Asador y hornos en el jardín |
 
 Formato recomendado: JPG horizontal, unos 1200px de ancho y menos de 300 KB.
