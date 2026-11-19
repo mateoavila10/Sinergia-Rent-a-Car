@@ -41,8 +41,9 @@ const FleetGrid = ({ showFilter = false }) => {
         </div>
         {showFilter && (
           <div className="fleet-filter">
-            <label>Categoría</label>
+            <label htmlFor="fleet-category">Categoría</label>
             <select
+              id="fleet-category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >

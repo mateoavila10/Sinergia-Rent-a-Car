@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 
 const ContactForm = () => {
+  const uid = useId();
   const BUSINESS_WHATSAPP =
     import.meta.env.VITE_BUSINESS_WHATSAPP || "5493814571012";
 
@@ -61,8 +62,9 @@ ${data.message}
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label>Nombre</label>
+        <label htmlFor={`${uid}-name`}>Nombre</label>
         <input
+          id={`${uid}-name`}
           name="name"
           value={form.name}
           onChange={handleChange}
@@ -71,8 +73,9 @@ ${data.message}
         />
       </div>
       <div className="form-group">
-        <label>Email</label>
+        <label htmlFor={`${uid}-email`}>Email</label>
         <input
+          id={`${uid}-email`}
           name="email"
           type="email"
           value={form.email}
@@ -82,8 +85,9 @@ ${data.message}
         />
       </div>
       <div className="form-group">
-        <label>Mensaje</label>
+        <label htmlFor={`${uid}-message`}>Mensaje</label>
         <textarea
+          id={`${uid}-message`}
           name="message"
           rows="4"
           value={form.message}
