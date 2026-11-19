@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { hotelImages } from "../data/hotelImages";
 
 const HotelPage = () => {
   return (
@@ -13,28 +12,6 @@ const HotelPage = () => {
           abiertas, aire puro y una arquitectura de castillo muy marcada.
         </p>
       </header>
-
-      {/* Galería de imágenes */}
-      <section className="section">
-        <div className="section-header">
-          <div>
-            <h2>Un castillo entre montañas</h2>
-            <p>
-              El edificio de piedra y sus galerías se integran con el paisaje:
-              jardines amplios, patio interno y una piscina con vista a los
-              cerros.
-            </p>
-          </div>
-        </div>
-
-        <div className="hotel-gallery">
-          {hotelImages.map((img) => (
-            <figure key={img.id} className="hotel-gallery-item">
-              <img src={img.src} alt={img.alt} />
-            </figure>
-          ))}
-        </div>
-      </section>
 
       {/* Info + beneficios combo */}
       <div className="page-two-columns" style={{ marginTop: 28 }}>

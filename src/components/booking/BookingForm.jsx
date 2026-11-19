@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { locations } from "../../data/locations";
 
 const BookingForm = ({ compact = false, defaultIncludeHotel = false }) => {
+  const uid = useId();
   const BUSINESS_WHATSAPP =
     import.meta.env.VITE_BUSINESS_WHATSAPP || "5493814571012";
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
@@ -103,8 +104,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
       <form className="booking-form" onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group">
-            <label>Nombre y apellido</label>
+            <label htmlFor={`${uid}-fullName`}>Nombre y apellido</label>
             <input
+              id={`${uid}-fullName`}
               name="fullName"
               value={form.fullName}
               onChange={handleChange}
@@ -116,8 +118,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
 
         <div className="form-row">
           <div className="form-group">
-            <label>Email</label>
+            <label htmlFor={`${uid}-email`}>Email</label>
             <input
+              id={`${uid}-email`}
               name="email"
               type="email"
               value={form.email}
@@ -127,8 +130,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
             />
           </div>
           <div className="form-group">
-            <label>Teléfono / WhatsApp</label>
+            <label htmlFor={`${uid}-phone`}>Teléfono / WhatsApp</label>
             <input
+              id={`${uid}-phone`}
               name="phone"
               value={form.phone}
               onChange={handleChange}
@@ -140,8 +144,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
 
         <div className="form-row">
           <div className="form-group">
-            <label>Categoría de vehículo</label>
+            <label htmlFor={`${uid}-vehicleCategory`}>Categoría de vehículo</label>
             <select
+              id={`${uid}-vehicleCategory`}
               name="vehicleCategory"
               value={form.vehicleCategory}
               onChange={handleChange}
@@ -155,8 +160,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
             </select>
           </div>
           <div className="form-group">
-            <label>Edad del conductor</label>
+            <label htmlFor={`${uid}-driverAge`}>Edad del conductor</label>
             <input
+              id={`${uid}-driverAge`}
               type="number"
               min="18"
               name="driverAge"
@@ -171,8 +177,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
         {/* Retiro y Devolución en columna para evitar que se salga de la card */}
 <div className="form-row form-row-locations">
   <div className="form-group">
-    <label>Retiro</label>
+    <label htmlFor={`${uid}-pickupLocation`}>Retiro</label>
     <select
+      id={`${uid}-pickupLocation`}
       name="pickupLocation"
       value={form.pickupLocation}
       onChange={handleChange}
@@ -185,8 +192,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
     </select>
   </div>
   <div className="form-group">
-    <label>Devolución</label>
+    <label htmlFor={`${uid}-returnLocation`}>Devolución</label>
     <select
+      id={`${uid}-returnLocation`}
       name="returnLocation"
       value={form.returnLocation}
       onChange={handleChange}
@@ -203,8 +211,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
 
         <div className="form-row">
           <div className="form-group">
-            <label>Fecha y hora de retiro</label>
+            <label htmlFor={`${uid}-pickupDate`}>Fecha y hora de retiro</label>
             <input
+              id={`${uid}-pickupDate`}
               type="datetime-local"
               name="pickupDate"
               value={form.pickupDate}
@@ -213,8 +222,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
             />
           </div>
           <div className="form-group">
-            <label>Fecha y hora de devolución</label>
+            <label htmlFor={`${uid}-returnDate`}>Fecha y hora de devolución</label>
             <input
+              id={`${uid}-returnDate`}
               type="datetime-local"
               name="returnDate"
               value={form.returnDate}
@@ -244,8 +254,9 @@ Quiero una cotización en SINERGIA RENT A CAR:
 
         <div className="form-row">
           <div className="form-group">
-            <label>Comentarios adicionales</label>
+            <label htmlFor={`${uid}-notes`}>Comentarios adicionales</label>
             <textarea
+              id={`${uid}-notes`}
               name="notes"
               rows="3"
               value={form.notes}

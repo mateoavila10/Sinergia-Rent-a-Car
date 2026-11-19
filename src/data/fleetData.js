@@ -8,8 +8,7 @@ export const fleetData = [
     transmission: "Manual",
     ac: true,
     priceFrom: 24500,
-    image:
-      "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/fotos/flota/economico.jpg",
   },
   {
     id: 2,
@@ -20,8 +19,7 @@ export const fleetData = [
     transmission: "Automática",
     ac: true,
     priceFrom: 29800,
-    image:
-      "https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/fotos/flota/compacto.jpg",
   },
   {
     id: 3,
@@ -32,8 +30,7 @@ export const fleetData = [
     transmission: "Automática",
     ac: true,
     priceFrom: 38500,
-    image:
-      "https://images.pexels.com/photos/2100193/pexels-photo-2100193.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/fotos/flota/suv.jpg",
   },
   {
     id: 4,
@@ -44,8 +41,7 @@ export const fleetData = [
     transmission: "Manual",
     ac: true,
     priceFrom: 45200,
-    image:
-      "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/fotos/flota/pickup.jpg",
   },
   {
     id: 5,
@@ -56,7 +52,6 @@ export const fleetData = [
     transmission: "Automática",
     ac: true,
     priceFrom: 51500,
-    image:
-      "https://images.pexels.com/photos/977003/pexels-photo-977003.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/fotos/flota/van.jpg",
   },
 ];
