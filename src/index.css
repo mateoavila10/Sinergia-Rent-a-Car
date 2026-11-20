@@ -1070,6 +1070,13 @@ textarea {
   color: var(--on-board);
 }
 
+.fleet-model {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--on-board);
+}
+
 .fleet-meta,
 .fleet-cap {
   margin: 4px 0 0;

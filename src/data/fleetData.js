@@ -24,6 +24,7 @@ export const fleetData = [
   {
     id: 3,
     name: "SUV Norte Argentino",
+    model: "Renault Duster o similar",
     category: "SUV",
     passengers: 5,
     luggage: 4,
