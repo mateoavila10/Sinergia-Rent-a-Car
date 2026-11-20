@@ -56,12 +56,13 @@ const FleetGrid = ({ showFilter = false, headingLevel = 2, title = "Flota" }) =>
             <li key={car.id} className="fleet-row">
               <Photo
                 src={car.image}
-                alt={car.name}
+                alt={car.model ? `${car.model} (imagen ilustrativa)` : car.name}
                 className="fleet-thumb"
                 fallback={<PhotoPending name={car.name} />}
               />
               <div className="fleet-id">
                 <RowH className="fleet-name">{car.name}</RowH>
+                {car.model && <p className="fleet-model">{car.model}</p>}
                 <p className="fleet-meta">
                   {car.transmission} · {car.ac ? "Aire acondicionado" : "Sin aire"}
                 </p>
