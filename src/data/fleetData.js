@@ -1,7 +1,10 @@
+// Fotos ilustrativas del modelo ("o similar"). `credit` es obligatorio para las
+// fotos con licencia Creative Commons: autor, licencia y página de origen.
 export const fleetData = [
   {
     id: 1,
     name: "Económico Ciudad",
+    model: "Renault Logan o similar",
     category: "Económico",
     passengers: 4,
     luggage: 2,
@@ -9,10 +12,17 @@ export const fleetData = [
     ac: true,
     priceFrom: 24500,
     image: "/fotos/flota/economico.jpg",
+    credit: {
+      author: "Autosdeprimera",
+      license: "CC BY 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+      source: "https://commons.wikimedia.org/wiki/File:2020_Renault_Logan_Intens_(Colombia)_front_view_01.png",
+    },
   },
   {
     id: 2,
     name: "Compacto Automático",
+    model: "Fiat Cronos o similar",
     category: "Compacto",
     passengers: 5,
     luggage: 3,
@@ -20,6 +30,12 @@ export const fleetData = [
     ac: true,
     priceFrom: 29800,
     image: "/fotos/flota/compacto.jpg",
+    credit: {
+      author: "Just a Man",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+      source: "https://commons.wikimedia.org/wiki/File:2024_Fiat_Cronos_1.3_GSE_Precision.jpg",
+    },
   },
   {
     id: 3,
@@ -32,10 +48,12 @@ export const fleetData = [
     ac: true,
     priceFrom: 38500,
     image: "/fotos/flota/suv.jpg",
+    // Foto del sitio oficial de Sinergia (rentacarsinergia.com.ar): no requiere crédito.
   },
   {
     id: 4,
     name: "Pick-Up 4x4",
+    model: "Volkswagen Amarok o similar",
     category: "Pick-Up",
     passengers: 5,
     luggage: 4,
@@ -43,10 +61,17 @@ export const fleetData = [
     ac: true,
     priceFrom: 45200,
     image: "/fotos/flota/pickup.jpg",
+    credit: {
+      author: "Just a Man",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+      source: "https://commons.wikimedia.org/wiki/File:2024_Volkswagen_Amarok_Highline_3.0_V6_(facelift,_Argentina)_(1-3).jpg",
+    },
   },
   {
     id: 5,
     name: "Van 7 Pax Familiar",
+    model: "Renault Trafic o similar",
     category: "Van",
     passengers: 7,
     luggage: 5,
@@ -54,5 +79,11 @@ export const fleetData = [
     ac: true,
     priceFrom: 51500,
     image: "/fotos/flota/van.jpg",
+    credit: {
+      author: "Alexander-93",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      source: "https://commons.wikimedia.org/wiki/File:Renault_Trafic_III_buses_Facelift_IMG_7691_(cropped).jpg",
+    },
   },
 ];
