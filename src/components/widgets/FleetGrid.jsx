@@ -86,6 +86,26 @@ const FleetGrid = ({ showFilter = false, headingLevel = 2, title = "Flota" }) =>
             </li>
           ))}
         </ul>
+
+        <p className="fleet-credits">
+          Fotos ilustrativas del modelo; la unidad entregada puede variar.{" "}
+          {fleetData
+            .filter((car) => car.credit)
+            .map((car, i, list) => (
+              <span key={car.id}>
+                {car.model.replace(" o similar", "")}:{" "}
+                <a href={car.credit.source} target="_blank" rel="noreferrer">
+                  {car.credit.author}
+                </a>
+                ,{" "}
+                <a href={car.credit.licenseUrl} target="_blank" rel="noreferrer">
+                  {car.credit.license}
+                </a>
+                , vía Wikimedia Commons (recortada)
+                {i < list.length - 1 ? " · " : "."}
+              </span>
+            ))}
+        </p>
       </div>
     </section>
   );

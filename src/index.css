@@ -1070,6 +1070,22 @@ textarea {
   color: var(--on-board);
 }
 
+.fleet-credits {
+  margin: 20px 0 0;
+  max-width: 110ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--on-board-dim);
+}
+
+.fleet-credits a {
+  color: var(--on-board-dim);
+}
+
+.fleet-credits a:hover {
+  color: var(--on-board);
+}
+
 .fleet-model {
   margin: 2px 0 0;
   font-size: 15px;
